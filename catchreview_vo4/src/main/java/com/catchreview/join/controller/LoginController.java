@@ -37,7 +37,7 @@ public class LoginController {
 			@RequestParam("password") String password,
 			Model model, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-
+ 
 		System.out.println(email);
 		System.out.println(password);
 		

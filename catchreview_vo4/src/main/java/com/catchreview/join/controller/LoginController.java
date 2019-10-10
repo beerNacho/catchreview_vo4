@@ -42,7 +42,7 @@ public class LoginController {
 		System.out.println(password);
 		
 		Optional<Member> mem = memberRepo.findByUemail(email);
-		Member member = mem.get(); 
+		Member member = mem.get();
 		if(password.equals(member.getUpw())) {
 			session.setAttribute("memberVo", member);
 		} else {
@@ -54,8 +54,9 @@ public class LoginController {
 		return mv;
 	}
 	
-	@RequestMapping("/logout")
-	public ModelAndView loginProcess(Model model, HttpSession session) {
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ModelAndView logout(Model model, HttpSession session) {
+		System.out.println("logout controller");
 		ModelAndView mv = new ModelAndView();
 		session.invalidate();
 		mv.setViewName("redirect:/");
@@ -65,10 +66,5 @@ public class LoginController {
 	@GetMapping("/accessDenied")
 	public void accessDenied(){
 		
-	}
-	
-	@GetMapping("/logout")
-	public void logout() {
-
 	}
 }

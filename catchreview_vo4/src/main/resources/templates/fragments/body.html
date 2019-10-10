@@ -57,7 +57,7 @@
 							<ul class="dropdown-menu">
 								<li th:if="${session.memberVo}"><a th:href="@{/mypage}">마이페이지</a></li>
 								<li th:if="${session.memberVo}">
-								<a th:href="@{/logout}">로그아웃</a>
+								<a th:href="@{/join/logout}">로그아웃</a>
 								</li>
 								<li th:unless="${session.memberVo}"><a th:href="@{/join/login}">로그인</a></li>
 								<li th:unless="${session.memberVo}"><a th:href="@{/join/memberJoin}">회원가입</a></li>

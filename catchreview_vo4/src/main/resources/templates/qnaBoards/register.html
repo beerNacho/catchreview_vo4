@@ -1,5 +1,4 @@
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{/layout/defaultLayout}">
 
@@ -44,7 +43,7 @@
 									<td><textarea class="form-control" style="height: 300px;" th:text="${vo.content}"
 											name="content" id="registerAge"></textarea></td>
 								</tr>
-								<tr th:with="member=${#authentication.principal.member}">
+								<tr th:with="member=${session.memberVo}">
 									<td style="background-color: #fafafa; text-align: center;"><h5>작성자</h5></td>
 									<td><input class="form-control" type="text" name="writer"
 										th:value="${member.uemail}" readonly="readonly"
@@ -105,11 +104,9 @@
 				var writer = $("input[name='writer']").val();
 				var filename = $("input[name='filename']").val();
 				
-				var csrf= JSON.parse('[[${_csrf}]]');
-				
 				var singleFileUploadInput = document.querySelector('#singleFileUploadInput');
 				
-				var obj = {title:title, content:content, writer:writer, filename:filename, csrf:csrf};
+				var obj = {title:title, content:content, writer:writer, filename:filename};
 				
 				alert(obj.writer);
 				

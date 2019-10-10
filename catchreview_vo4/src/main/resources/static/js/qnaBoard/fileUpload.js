@@ -14,9 +14,6 @@ function uploadSingleFile(obj, file) {
     		url: '/qnaBoards/register',
     		data: JSON.stringify(obj),
     		dataType: 'json',
-    		beforeSend : function(xhr){
-    			xhr.setRequestHeader(obj.csrf.headerName, obj.csrf.token);
-    		},
     		contentType: "application/json",
     		success: location.href=alert('성공')
     	});

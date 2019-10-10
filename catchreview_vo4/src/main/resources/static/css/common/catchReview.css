@@ -1,0 +1,41 @@
+/* 전체영역을 통틀어서 스타일 정의 */
+@import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+*{
+	font-family: 'Nanum Gothic';
+}
+*{
+	color: #000000;
+	text-decoration: none;
+}
+*{
+	font-family: 'Nanum Gothic';
+}
+*:hover{
+	text-decoration: none;
+}
+
+.navbar-brand, h1, h2, h3, h4 {
+	font-family : 'jeju Gothic';
+}
+h5{
+	font-family : 'jeju Gothic';
+	font-size : 18px;
+}
+li{
+	list-style-type: none;
+}
+
+/* 플렉스 로우 적용 서식 */
+.flex-row{
+	text-decoration: none;
+	display: flex;
+	flex-direction: row;
+	padding:0px;
+	margin-top:15px;
+}
+.flex-row li{
+	display: inline-block;
+	margin-right: 15px;
+}

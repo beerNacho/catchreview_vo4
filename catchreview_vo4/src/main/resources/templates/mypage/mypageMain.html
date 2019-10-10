@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/defaultLayout">
+<head>
+<meta charset="utf-8">
+<th:block layout:fragment="pageCustomCss">
+    <link rel="stylesheet" th:href="@{/css/mypage/mypageMain.css}">
+</th:block>
+</head>
+
+<th:block layout:fragment="content">
+
+	<!-- index 메인 -->
+	<section class="container" style="width:78%;">
+			<div class="centerWrap">
+				<div id="sectionHead">
+					<ul>
+						<li><a th:href="@{/}">Home</a> >&nbsp;</li>
+						<li><a th:href="@{/mypage}">마이 페이지</a></li>
+					</ul>
+				</div>
+				<article id="topBox">
+					<div id="left">
+						<p>
+							[[${#authentication.principal.member.uname}]] 님은
+							Gold 회원등급 입니다.
+						</p>
+					</div>
+					<div id="right">
+						<ul>
+							<a th:href="@{/join/memberUpdate}"><li>내 정보수정</li></a>
+							<a th:href="@{/mypage/store(id=${#authentication.principal.member.id})}"><li>MY 가게</li></a>
+							<a th:href="@{/mypage/point}"><li>포인트</li></a>
+							<a th:href="@{/mypage/review}"><li>MY 리뷰</li></a>
+					</ul>
+					</div>
+				</article>
+				<article id="middleBox" style="width:100%">
+					<div id="user">
+						<img src="../images/common/basicProfile.png"
+							style="width: 100px; height: 100px;">
+						<div id="setProfile">
+							<img src="../images/common/setting.png">
+						</div>
+
+						<p>[[${#authentication.principal.member.uname}]]님
+						</p>
+						<p>Gold</p>
+					</div>
+					<div id="userInfo">
+						<div class="box">
+							<p>전체 리뷰</p>
+							<span>20개</span>
+						</div>
+						<div class="box">
+							<p>채택 리뷰</p>
+							<span>0개</span>
+						</div>
+						<div class="box" style="border: 0px;">
+							<p style="margin-left: 75px;">획득 포인트</p>
+							<span>200P</span>
+						</div>
+					</div>
+				</article>
+				<div>
+					<h3>나의 리뷰 현황</h3>
+					<a th:href="@{/}" style="float: right; margin-right : 20px; margin-top : 20px;"><h4>더보기></h4></a>
+				</div>
+				<article id="review" style="Width:100%">
+					<table style="width:100%">
+						<thead>
+							<tr>
+								<th style="width: 300px;">가게명</th>
+								<th style="width: 100px;">가게평가</th>
+								<th style="width: 500px;">리뷰제목</th>
+								<th style="width: 200px;">작성시간</th>
+								<th>리뷰평점</th>
+							</tr>
+						</thead>
+						<tbody>
+						
+							<tr>
+								<td style="width : 20%;"><a href="../store/store.jsp?storeNum=<%=storeNum %>">가게이름</a></td>
+								<td style="width : 10%;">
+								<img src="../images/common/good.png">
+								</td>
+								<td style="width : 50%;"><a onclick="addReview(<%=reviewNum%>)">리뷰제목</a></td>
+								<td style="width : 10%;">리뷰작성일자</td>
+								<td style="width : 10%;">리뷰점수</td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+				<h3>최근 본 가게</h3>
+				<article id="recentStore" style="width:100%">
+				</article>
+				<h3>방문했던 가게</h3>
+				<article id="visitStore" style="width:100%">
+					<p>방문 내역이 없습니다.</p>
+				</article>
+			</div>
+		</section>
+</th:block>
+
+<th:block layout:fragment="pageCustomScript">
+<script th:src="@{/js/mypage/mypageMain.js}"></script>
+</th:block>
+
+</html>

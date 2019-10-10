@@ -1,0 +1,124 @@
+
+.jumbotron {
+	background-image: url('../../images/qa/banner5.png');
+	background-size: cover;
+	text-shadow: black 0.2em 0.2em 0.2em;
+	color: #ffffff;
+}
+
+@media screen and (min-width: 768px) {
+	.jumbotron {
+		padding: 78px 0;
+	}
+	.jumbotron p {
+		color: #ffffff;
+	}
+	.jumbotron a {
+		margin-top: 20px;
+		background-color: #000000;
+		border: 0;
+	}
+	.jumbotron a:hover {
+		background-color: #000000;
+	}
+}
+
+
+#listSection {
+	margin-top : 50px;
+}
+#listSection .panel {
+	border: 1px solid #eeeeee;
+}
+
+#listSection .panel-heading {
+	border-color: #eeeeee;
+}
+
+#listSection .panel-heading {
+	padding: 0px;
+}
+
+#listSection #header li {
+	padding: 10px;
+	width: 33%;
+	margin: 0 auto;
+	display: inline-block;
+	text-align: center;
+	color: #bbbbbb;
+	font-weight: bold;
+}
+
+#listSection #header li:hover {
+	color: #ffffff;
+	font-weight: bold;
+}
+
+#listSection #area {
+	width: 100%;
+	float: left;
+	border-left: 1px solid #4d4d4c;
+	border-right: 1px solid #d0d0d0;
+	background: #666a7a;
+}
+
+#listSection #area li {
+	background: url(../../images/tab_subBar02.gif) no-repeat 100% 16px;
+	float: left;
+	width: 61px;
+	height: 46px;
+	text-align: center;
+	display: inline-block;
+	padding: 15px;
+	margin-right: 0px;
+	color: #ffffff;
+	margin: 0 auto;
+}
+
+#storeTable {
+	
+}
+
+#storeTable th, td {
+	text-align: center;
+}
+
+#listSection .flex-row {
+	margin: 0px;
+	color: #ffffff;
+}
+
+.selected {
+	color: #ffffff;
+	font-weight: bold;
+}
+
+
+#pagination{
+	height : 30px;
+	margin-left : 450px;
+	padding : 5px;
+	display : inline-block;
+}
+
+#pagination>li>.selected {
+	background-color: #000000;
+	color: #fff;
+}
+
+#pagination>li>a {
+	float: left;
+	padding: 6px 12px;
+	margin-left: -1px;
+	line-height: 1.42857143;
+	color: #ccc;
+	text-decoration: none;
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+
+#btn_regist{
+	float : right;
+	margin-right : 20px;
+	position:absolute; top:30px; right:20px;
+}

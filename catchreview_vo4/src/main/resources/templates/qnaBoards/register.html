@@ -1,0 +1,132 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout/defaultLayout}">
+
+<head>
+<meta charset="utf-8">
+<th:block layout:fragment="pageCustomCss">
+	<link rel="stylesheet" th:href="@{/css/QA/QA.css}">
+</th:block>
+</head>
+
+<div layout:fragment="content">
+	<div id="section-1" class="container">
+		<div id="mainSection">
+			<div class="jumbotron">
+				<h1 class="text-center">Answer your Question</h1>
+				<p class="text-center">친절한 서비스로 정성을 다해 고객님을 모시겠습니다.</p>
+				<p class="text-center">
+					<a class="btn btn-primary btn-lg" href="#" role="button">Contact
+						us</a>
+				</p>
+			</div>
+
+			<div id="listSection">
+				<div class="container">
+					<form id="form_upload" enctype="multipart/form-data" th:action="@{register}">
+						<table class="table"
+							style="text-align: center; border: 1px solid #dddddd">
+							<thead>
+								<tr>
+									<th colspan="2" style="background-color: #fafafa; text-align: center;">
+									<h5>게시글 작성하기</h5></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td style="background-color: #fafafa; text-align: center;"><h5>제목</h5></td>
+									<td><input class="form-control" type="text"
+										name="title" id="registerName" size="20" th:value="${vo.title}"></td>
+								</tr>
+								<tr>
+									<td style="background-color: #fafafa; text-align: center;"><h5>내용</h5></td>
+									<td><textarea class="form-control" style="height: 300px;" th:text="${vo.content}"
+											name="content" id="registerAge"></textarea></td>
+								</tr>
+								<tr th:with="member=${#authentication.principal.member}">
+									<td style="background-color: #fafafa; text-align: center;"><h5>작성자</h5></td>
+									<td><input class="form-control" type="text" name="writer"
+										th:value="${member.uemail}" readonly="readonly"
+										id="registerAge" size="20"></td>
+								</tr>
+								<tr>
+									<td style="background-color: #fafafa; text-align: center;"><h5>첨부파일</h5></td>
+									<td>
+									<input class="form-control" type="text" id="btn_file"
+										readonly placeholder="클릭해주세요." size="20">
+										
+										<input type="file" id="singleFileUploadInput" name="fileName"
+										style="display: none;">
+										
+										</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+									<button class="btn btn-primary pull-right"
+											type="button" id="btn_submit"
+											style="background-color: #000000; color: #ffffff; margin-left:20px;">등록</button>
+											<button type="reset" class="btn btn-default pull-right">Reset</button>
+											</td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<th:block layout:fragment="pageCustomScript">
+<script th:inline="javascript">
+	window.onload = function(){
+		 $('#btn_file').on('click', function(){
+      	  $('#singleFileUploadInput').trigger('click');
+      	  
+          });
+		 
+		 
+		 $('#singleFileUploadInput').on('change', function(){
+			 var file = $('#singleFileUploadInput').val();
+			 var fileName = file.substring(12);
+	       	  $('#btn_file').attr('value', fileName);
+	      });
+		 
+		 
+		 
+		 $("#btn_submit").on("click", function(){
+				
+				var title = $("input[name='title']").val();
+				var content = $("input[name='content']").val();
+				var writer = $("input[name='writer']").val();
+				var filename = $("input[name='filename']").val();
+				
+				var csrf= JSON.parse('[[${_csrf}]]');
+				
+				var singleFileUploadInput = document.querySelector('#singleFileUploadInput');
+				
+				var obj = {title:title, content:content, writer:writer, filename:filename, csrf:csrf};
+				
+				alert(obj.writer);
+				
+				var files = singleFileUploadInput.files;
+				
+				
+			    if(files.length === 0) {
+			        alert('파일이 존재하지 않습니다.');
+			    }else {
+			    	alert('파일이 존재합니다.');
+			    }
+			    
+			    uploadSingleFile(obj, files[0]);
+			    event.preventDefault();
+				
+			});
+		}
+	</script>
+<script th:src="@{/js/qnaBoard/fileUpload.js}"></script>
+</th:block>

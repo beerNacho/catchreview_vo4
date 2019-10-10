@@ -1,0 +1,178 @@
+#section-1 {
+	display : flex;
+	flex-direction : row;
+}
+
+/* 점보트론 영역 (가운데 배경 이미지) */
+.jumbotron {
+	background-image: url('../../images/reviewChart/banner4.png');
+	background-size : cover;
+	text-shadow: black 0.2em 0.2em 0.2em;
+	color : #ffffff;
+}
+@media screen and (min-width: 768px) {
+	.jumbotron {
+		padding: 78px 0;
+	}
+	.jumbotron p{
+		color : #ffffff;
+	}
+	.jumbotron a{
+		margin-top: 20px;
+		background-color: #000000;
+		border : 0;
+	}
+	.jumbotron a:hover{
+		background-color: #000000;
+	}
+}
+
+
+/* aside 구역 */
+
+#aside{
+	margin-left : 20px;
+}
+
+#imgSection-1 {
+
+}
+#imgSection-1 img{
+	width:300px;
+	height:380px;
+	border-radius: 6px;
+	background-size: cover;
+}
+
+#aside #currentRankingStore{
+	width : 320px;
+	height : 380px;
+	margin-top : 30px;
+}
+
+#currentRankingStore .panel-heading{
+	font-weight : bold;
+}
+
+#currentRankingStore ul{
+	padding : 10px 15px;
+}
+
+#currentRankingStore li{
+	margin-bottom : 15px;
+}
+#currentRankingStore li span, img{
+	margin-right : 15px;
+}
+
+#currentRankingStore img{
+	width: 50px;
+	height : 50px;
+}
+
+
+
+
+/* 가게 리스트 */
+
+#listSection .panel{
+	border : 1px solid #eeeeee;
+}
+
+#listSection .panel-heading{
+	border-color : #eeeeee;
+	background-color : #000000;
+}
+
+#listSection .panel-heading{
+	padding:0px;
+}
+#listSection #header li{
+	padding: 10px;
+	width:33%;
+	margin : 0 auto;
+	display : inline-block;
+	text-align: center;
+	color : #bbbbbb;
+	font-weight : bold;
+}
+#listSection #header li:hover{
+	color : #ffffff;
+	font-weight : bold;
+}
+
+#listSection #area{
+	width: 100%;
+	float: left;
+    border-left: 1px solid #4d4d4c;
+    border-right: 1px solid #d0d0d0;
+    background: #666a7a;
+}
+
+#listSection #area li{
+	background: url(../../images/tab_subBar02.gif) no-repeat 100% 16px;
+    float: left;
+    width: 61px;
+    height: 46px;
+    text-align: center;
+    display: inline-block;
+    padding:15px;
+    margin-right : 0px;
+    color : #ffffff;
+    margin : 0 auto;
+}
+
+
+/* 리뷰 리스트 */
+#reviewList .media{
+	padding : 30px;
+	padding-left : 100px;
+}
+#reviewList img{
+	width : 90px;
+	height : 90px;
+	border-radius : 80px;
+}
+
+#reviewList #writer{
+	margin-top : 15px;
+}
+#reviewList .media-heading{
+	position : relative;
+	display : flex;
+	flex-direction : row;
+}
+#reviewList .media-body{
+	padding-left : 100px;
+}
+
+#reviewList #expreImgBox {
+	position : absolute;
+	right : 0px;
+}
+#reviewList #expreImgBox img{
+	width:40px;
+	height:40px;
+}
+
+#reviewList .expreImg ul{
+	padding : 0px;
+}
+
+#reviewList .expreImg li{
+	text-align : center;
+}
+.media-body span{
+	margin-right : 30px;
+}
+
+
+
+.flex-row{
+	margin : 0px;
+	color : #ffffff;
+}
+.selected{
+	color : #ffffff;
+	font-weight : bold;
+}

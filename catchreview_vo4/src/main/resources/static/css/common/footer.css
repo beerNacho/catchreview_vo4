@@ -1,0 +1,7 @@
+/* 전체영역을 통틀어서 스타일 정의 */
+@import url(https://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+footer .container h5, footer .container h4,footer .container p,footer .container span{
+		color : #ffffff;
+	}

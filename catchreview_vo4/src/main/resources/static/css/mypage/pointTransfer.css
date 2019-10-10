@@ -1,0 +1,115 @@
+main{
+	margin : 0 auto;
+}
+#wrap{
+	height : 400px;
+}
+#mainSection{
+	width : 400px;
+	height : 400px;
+	background-color :  #f7f9f8;
+}
+#btn_file{
+	border: 1px solid #d7dbe2;
+    border-radius: 0;
+    background-color: #fff;
+    color: black;
+    margin-left: 5px;
+    width: 70px;
+    height: 30px;
+}
+#buttonSite{
+	width : 400px;
+	height : 70px;
+}
+#amountSite{
+	width : 400px;
+	height : 290px;
+	padding : 30px;
+	display : flex;
+	flex-direction : column;
+}
+#btn_transfer{
+	min-width: 80px;
+    height: 44px;
+    padding: 0 10px 0 10px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #00a7b3;
+    background: #00a7b3;
+    text-align: center;
+    vertical-align: top;
+}
+#btn_cancel{
+ 	display: inline-block;
+    min-width: 80px;
+    height: 44px;
+    padding: 0 10px 0 10px;
+    line-height: 40px;
+    color: #00a7b3;
+    font-size: 14px;
+    border: 1px solid #00a7b3;
+    background: #ffffff;
+    text-align: center;
+   	margin-left : 115px;
+}
+#Head{
+	width: 400px;
+	height: 40px;
+	background-color: #00A7B3;
+	color : #fff;
+	padding : 10px;
+	font-weight : bold;
+	font-size : 15px;
+}
+.line{
+	width:340px;
+	height: 60px;
+	display : flex;
+	flex-direction : row;
+}
+.left{
+	height : 60px;
+	width:110px;
+	padding : 20px;
+	font-size : 13px;
+	font-weight : bold;
+}
+.right{
+	height: 60px;
+	width: 230px;
+	padding : 20px;
+}
+.txt_style{
+	width:180px;
+	height : 25px;
+}
+#memberList{
+	width : 180px;
+	height: 150px;
+	background-color : #fff;
+	border : 1px solid #222;
+	overflow : scroll;
+	display : flex;
+	flex-direction : column;
+}
+.listLine{
+	display : flex;
+	flex-direction : row;
+	width : 160px;
+	padding-top : 15px;
+	padding-bottom : 15px;
+}
+.userList{
+	width : 140px;
+	hegiht:30px;
+	border-bottom : 1px solid #222;
+	padding : 5px;
+}
+.select{
+	width:20px;
+	height:30px;
+	border-bottom : 1px solid #222;
+	padding : 5px;
+}

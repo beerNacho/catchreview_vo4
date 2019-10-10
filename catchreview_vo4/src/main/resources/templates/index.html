@@ -1,10 +1,188 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/defaultLayout">
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<th:block layout:fragment="pageCustomCss">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</th:block>
 </head>
-<body>
-<h2>Hello World</h2>
-</body>
+
+<th:block layout:fragment="content">
+
+	<div class="content-wrapper">
+		<div id="section-1" class="container" style="width: 100%;">
+			<div class="jumbotron">
+				<h1 class="text-center">Catch Review</h1>
+				<p class="text-center">사람들과 공감지수가 높은 리뷰를 작성한 당신. 상금을 쟁취하십시오.</p>
+				<p class="text-center">
+					<a class="btn btn-primary btn-lg" href="storeChart/storeChart.jsp"
+						role="button">가게 둘러보기</a>
+				</p>
+			</div>
+			<div id="section-2" class="container">
+				<div role="header">
+					<h1 class="text-center">What to do?</h1>
+					<p class="text-center"
+						style="font-size: 18px; margin: 50px 0 50px 0">ShopOwner에게는
+						맞춤형 컨텐츠와 Direct 마케팅을, User에게는 신뢰성 있는 리뷰와 상금을 얻을 수 있는 기회를</p>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<h4 class="text-center">Trustable Review</h4>
+						<p class="text-center">
+							For User<br>사용자 평가에 기반한 신뢰도 있는 리뷰와 다양한 컨텐츠
+						</p>
+						<p class="text-center" style="margin-top: 30px;">
+							<a class="btn btn-default" data-target="#modal"
+								data-toggle="modal">자세히 알아보기</a>
+						</p>
+					</div>
+					<div class="col-md-4">
+						<h4 class="text-center">ShopOwner's Marketing Tool</h4>
+						<p class="text-center">
+							For ShopOwner<br>맞춤형 CRM과 Marketing Tool 제공
+						</p>
+						<p class="text-center" style="margin-top: 30px;">
+							<a class="btn btn-default" href="#">자세히 알아보기</a>
+						</p>
+					</div>
+					<div class="col-md-4">
+						<h4 class="text-center">Earn money by Review</h4>
+						<p class="text-center">
+							For Reviewr<br>리뷰를 통해 상금을 얻을 수 있는 것
+						</p>
+						<p class="text-center" style="margin-top: 30px;">
+							<a class="btn btn-default" href="#">자세히 알아보기</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="section-3" class="container"
+			style="width: 100%; height: 500px;">
+			<div id="map"></div>
+			<div id="mapHandler" style="background-color: #ffffff;">
+				<div id="currentLocation"
+					style="padding: 10px; padding-left: 20px; background-color: #eeeeee;">
+					<span>현위치 : &nbsp;&nbsp;서울 서초구 강남대로 309</span>
+				</div>
+				<div id="header">
+					Store 0개 검색 
+					<button type="submit" id="storeNext" class="btn pull-right"
+						onclick="page(<%=pageNum + 1%>)">다음</button>
+
+					
+					<button type="submit" id="storeNext" class="btn pull-right"
+						onclick="page(<%=pageNum - 1%>)">이전</button>
+				</div>
+				<div id="filter">
+					<span class="col-md-3">▶상호순</span><span class="col-md-3">▶상금순</span><span
+						class="col-md-3">▶추천순</span><span class="col-md-3">▶리뷰순</span>
+				</div>
+				
+				<input type="hidden"
+					value="<%=storeAddress1%>" name="address"> <input
+					type="hidden" value="<%=storeName%>" name="name"> <input
+					type="hidden" value="<%=storeNum%>" name="num"> 
+				<div id="storeInformation"
+					style="display: flex; flex-direction: row; padding: 10px;">
+					<div id="storeImage" style="margin-right: 20px;">
+						<img class="media-object"
+							src="./uploadFile/storePicture/<%=listPicture.get(0).getFileName()%>"
+							style="width: 90px; height: 90px;">
+					</div>
+					<div id="storeState">
+						<input type="hidden"
+							value="./uploadFile/storePicture/<%=listPicture.get(0).getFileName()%>"
+							name="storePicture">
+						<ul style="padding: 0px;">
+							<li><a class="localStore" >가게이름</a></li>
+							<li>가게점수</li>
+							<li>가게주소</li>
+							<li>가게연락처</li>
+						</ul>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+		<br>
+		<div id="section-4" class="container" style="width: 80%">
+			<div class="panel panel-primary">
+				<ul class="flex-row">
+					<li id="temp" class="select" style="border-bottom: 0px;">Hot Place</li>
+					<li >Hot Reivew</li>
+				</ul>
+				<div class="panel-body">
+					<div class="media">
+						<div class="media-top">
+							<a
+								href="storeIntro.html"><img class="media-object"
+								src="./uploadFile/storePicture/<%=listPictur.getFileName()%>"
+								alt="가게이미지"></a>
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">
+								<a href="store/store.jsp?storeNum=<%= storeNum %>">가게이름</a>&nbsp;<span
+									class="badge">New</span>
+							</h4>
+							<ul class="flex-row" style="padding: 30px; padding-top: 10px;">
+								<li>보상금</li>
+								<li>100점</li>
+								<li>21개&nbsp;</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal" id="modal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					캐치리뷰의 특징
+					<button class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body" style="text-align: center;">
+					저희 서비스의 특징은 가게주인은 마케팅 효과를 얻을 수 있는 점<br> 특히 다양한 마케팅 툴을 사용하여
+					제공합니다. <br> <br> <img src="images/modalImg.jpg"
+						id="imagepreview" style="width: 256px; height: 256px;">
+				</div>
+			</div>
+		</div>
+	</div>
+		
+	</div>
+</th:block>
+
+<th:block layout:fragment="pageCustomScript">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e0853fb58f3f6c7a181c9ca5c58735af&libraries=services"></script>
+<script th:src="@{/js/index/mapStoreList.js}"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+mapOption = {
+	center : new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	level : 5
+// 지도의 확대 레벨
+};
+
+//지도를 생성합니다    
+var map = new daum.maps.Map(mapContainer, mapOption);
+
+//주소-좌표 변환 객체를 생성합니다
+var geocoder = new daum.maps.services.Geocoder();
+//주소로 좌표를 검색합니다	
+geocoder.addressSearch("서울 강남구 개포로", function(result, status) {
+	if (status === daum.maps.services.Status.OK) {
+		var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+		map.setCenter(coords);			
+	} 
+});  
+</script>
+</th:block>
+
 </html>

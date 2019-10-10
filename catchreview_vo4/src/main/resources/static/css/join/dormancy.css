@@ -1,0 +1,21 @@
+#sectionHead {
+	height: 40px;
+	border-bottom: 1px solid #EDEDED;
+	margin-top: 10px;
+}
+
+#sectionHead ul {
+	padding: 8px;
+	float: right;
+}
+
+#sectionHead li {
+	display: inline;
+	padding: 5px;
+	font-size: 12.5px;
+}
+
+.panel-body img{
+	width:250px;
+	height:250px;
+}

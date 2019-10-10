@@ -1,0 +1,117 @@
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout/defaultLayout}">
+
+<head>
+<meta charset="utf-8">
+<th:block layout:fragment="pageCustomCss">
+	<link rel="stylesheet" th:href="@{/css/QA/QA.css}">
+</th:block>
+</head>
+
+<div layout:fragment="content">
+	<div id="section-1" class="container">
+		<div id="mainSection">
+			<div class="jumbotron">
+				<h1 class="text-center">Answer your Question</h1>
+				<p class="text-center">친절한 서비스로 정성을 다해 고객님을 모시겠습니다.</p>
+				<p class="text-center">
+					<a class="btn btn-primary btn-lg" href="#" role="button">Contact
+						us</a>
+				</p>
+			</div>
+
+			<div id="listSection">
+				<div class="container">
+					<form id='f1'>
+						<input type="hidden" name="bno" th:value="${vo.bno}">
+						<input type="hidden" th:name="${_csrf.parameterName}"
+							th:value="${_csrf.token}" /> <input type="hidden" name="page"
+							th:value="${pageVO.page}"> <input type="hidden"
+							name="size" th:value="${pageVO.size}"> <input
+							type="hidden" name="type" th:value="${pageVO.type}"> <input
+							type="hidden" name="keyword" th:value="${pageVO.keyword}">
+						<table class="table"
+							style="text-align: center; border: 1px solid #dddddd">
+							<thead>
+								<tr>
+									<th colspan="2"
+										style="background-color: #fafafa; text-align: center;"><h5>게시글
+											수정하기</h5></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td style="background-color: #fafafa; text-align: center;"><h5>제목</h5></td>
+									<td><input class="form-control" type="text" name="title"
+										th:value="${vo.title}" size="20"></td>
+								</tr>
+								<tr>
+									<td style="background-color: #fafafa; text-align: center;"><h5>내용</h5></td>
+									<td><textarea class="form-control" style="height: 300px;"
+											rows="3" name="content" th:text="${vo.content}"></textarea></td>
+								</tr>
+								<tr>
+									<td style="background-color: #fafafa; text-align: center;"><h5>작성자</h5></td>
+									<td><input class="form-control" type="text" name="writer"
+										readonly th:value="${vo.writer}" size="20"></td>
+								</tr>
+								<tr>
+									<td style="background-color: #fafafa; text-align: center;"><h5>첨부파일</h5></td>
+									<td><input class="form-control" type="text" id="btn_file"
+										readonly placeholder="클릭해주세요." size="20"> <input
+										type="file" id="fileName" name="fileName"
+										style="display: none;"></td>
+								</tr>
+								<tr>
+									<td colspan="2">
+									<div class="pull-right">
+									<a href="#"
+										class="btn btn-warning modbtn">Modify</a> <a href="#"
+										class="btn btn-danger delbtn">Delete</a> <a
+										th:href="@{ list(page=${pageVO.page},
+													size=${pageVO.size},
+													type=${pageVO.type},
+													keyword=${pageVO.keyword},
+													bno=${vo.bno}
+													)}"
+										class="btn btn-primary">Cancel & Go List</a>
+										</div>
+									</td>
+
+								</tr>
+							</tbody>
+						</table>
+					</form>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<th:block layout:fragment="pageCustomScript">
+	<script th:inline="javascript">
+		$(document).ready(function() {
+			var formObj = $("#f1");
+
+			$(".delbtn").click(function() {
+				formObj.attr("action", "delete");
+				formObj.attr("method", "post");
+
+				formObj.submit();
+			});
+
+			$(".modbtn").click(function() {
+
+				formObj.attr("action", "modify");
+				formObj.attr("method", "post");
+
+				formObj.submit();
+			});
+		});
+	</script>
+</th:block>

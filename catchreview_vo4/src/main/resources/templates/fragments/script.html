@@ -1,0 +1,36 @@
+<!Doctype html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<body th:fragment="script">
+	
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script th:src="@{/js/vendor/modernizr-3.7.1.min.js}"></script>
+	<script th:src="@{/js/bootstrap/bootstrap.js}"></script>
+	<!-- Add your site or application content here -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script>
+		
+	</script>
+	<script th:src="@{/js/plugins.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+
+
+
+	<!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+	<script>
+		window.ga = function() {
+			ga.q.push(arguments)
+		};
+		ga.q = [];
+		ga.l = +new Date;
+		ga('create', 'UA-XXXXX-Y', 'auto');
+		ga('set', 'transport', 'beacon');
+		ga('send', 'pageview')
+	</script>
+	<script src="https://www.google-analytics.com/analytics.js" async></script>
+	<th:block layout:fragment="pageCustomScript"></th:block>
+</body>
+</html>

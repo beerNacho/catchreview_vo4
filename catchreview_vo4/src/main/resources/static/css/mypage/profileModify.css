@@ -1,0 +1,85 @@
+main{
+	margin : 0 auto;
+}
+#wrap{
+	height : 400px;
+}
+#mainSection{
+	width : 400px;
+	height : 400px;
+	background-color :  #f7f9f8;
+}
+#fileSite{
+	width : 400px;
+	height : 100px;
+	padding : 10px;
+}
+#fileLabel{
+	display: inline-block;
+    padding: 5px 10px 0 0;
+    font-size: 14px;
+    font-weight: bold;
+    vertical-align: top;
+    margin-left : 90px;
+}
+#fileName{
+	display : none;
+}
+#btn_file{
+	border: 1px solid #d7dbe2;
+    border-radius: 0;
+    background-color: #fff;
+    color: black;
+    margin-left: 5px;
+    width: 70px;
+    height: 30px;
+}
+#imgSection{
+	width : 400px;
+	height : 180px;
+}
+#imgSection img{
+	margin-left : 130px;
+	margin-top : 40px;
+	width:120px;
+	height:120px;
+	border-radius: 60px;
+}
+#buttonSite{
+	width : 400px;
+	height : 70px;
+}
+#btn_modify{
+	min-width: 80px;
+    height: 44px;
+    padding: 0 10px 0 10px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #00a7b3;
+    background: #00a7b3;
+    text-align: center;
+    vertical-align: top;
+}
+#btn_cancel{
+ 	display: inline-block;
+    min-width: 80px;
+    height: 44px;
+    padding: 0 10px 0 10px;
+    line-height: 40px;
+    color: #00a7b3;
+    font-size: 14px;
+    border: 1px solid #00a7b3;
+    background: #ffffff;
+    text-align: center;
+   	margin-left : 100px;
+}
+#Head{
+	width: 400px;
+	height: 40px;
+	background-color: #00A7B3;
+	color : #fff;
+	padding : 10px;
+	font-weight : bold;
+	font-size : 15px;
+}

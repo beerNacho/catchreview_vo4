@@ -1,0 +1,119 @@
+<!Doctype html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+
+<body th:fragment="body">
+
+
+	<header>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+						aria-expanded="false">
+						<span class="sr-only"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" th:href="@{/}" style="color: #ffffff;">catchReview</a>
+				</div>
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li><a th:href="@{/map}">지도<span class="sr-only"></span></a></li>
+						<li><a th:href="@{/storeChart}">차트</a></li>
+						<li><a th:href="@{/reviewChart}">리뷰</a></li>
+						<li class="dropdown"><a th:href="@{marketing}"
+							class="dropdown-toggle" data-toggle="dropdown" role="button"
+							aria-haspopup="true" aria-expanded="false">마케팅<span
+								class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">고객관리</a></li>
+								<li><a href="#">데이터분석</a></li>
+								<li><a href="#">쿠폰발행</a></li>
+							</ul></li>
+						<li><a th:href="@{/qnaBoards/list}">Q & A</a></li>
+					</ul>
+					<form class="navbar-form navbar-left">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="내용을 입력하세요.">
+							<button type="submit" class="btn btn-default">검색</button>
+						</div>
+					</form>
+
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+						<a	th:unless="${session.memberVo}"
+							href="#" class="dropdown-toggle" data-toggle="dropdown"
+							role="button" aria-haspopup="true" aria-expanded="false">접속하기<span
+								class="caret"></span></a>
+						<a	th:if="${session.memberVo}"
+							href="#" class="dropdown-toggle" data-toggle="dropdown"
+							role="button" aria-haspopup="true" aria-expanded="false">[[${session.memberVo.uname}]]<span
+								class="caret"></span></a>
+								
+							<ul class="dropdown-menu">
+								<li th:if="${session.memberVo}"><a th:href="@{/mypage}">마이페이지</a></li>
+								<li th:if="${session.memberVo}">
+								<a th:href="@{/logout}">로그아웃</a>
+								</li>
+								<li th:unless="${session.memberVo}"><a th:href="@{/join/login}">로그인</a></li>
+								<li th:unless="${session.memberVo}"><a th:href="@{/join/memberJoin}">회원가입</a></li>
+							</ul></li>
+					</ul>
+					
+				</div>
+			</div>
+		</nav>
+	</header>
+	
+	
+	<th:block layout:fragment="content">
+		
+	</th:block>
+	
+
+	<footer style="background-color: #000000; color: #ffffff;">
+		<div class="container" style="width:80%">
+			<br>
+			<div class="row">
+				<div class="col-sm-2" style="text-align: center;">
+					<h5>Copyright &copy; 2017</h5>
+					<h5>김정인(JeongIn Kim)</h5>
+				</div>
+				<div class="col-sm-4" style="text-align: center;">
+					<h5>대표자 소개</h5>
+					<p>catchReview 대표 김정인입니다.</p>
+				</div>
+				<div class="col-sm-2" style="text-align: center;">
+					<h5>네비게이션</h5>
+					<div class="list-group">
+						<a href="#" class="list-group-item">지도</a> <a href="#"
+							class="list-group-item">차트</a> <a href="#"
+							class="list-group-item">리뷰</a>
+					</div>
+				</div>
+				<div class="col-sm-2" style="text-align: center;">
+					<h5>SNS</h5>
+					<div class="list-group">
+						<a href="https://www.facebook.com" class="list-group-item">페이스북</a>
+						<a href="https://www.youtube.com" class="list-group-item">유튜브</a>
+						<a href="https://www.naver.com" class="list-group-item">네이버 TV</a>
+					</div>
+				</div>
+				<div class="col-sm-2">
+					<h4 style="text-align: center;">
+						<span class="glyphicon glyphicon-ok"></span>&nbsp;&nbsp;&nbsp;by
+						김정인
+					</h4>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<th:block th:include="fragments/script">
+	</th:block>
+</body>
+</html>

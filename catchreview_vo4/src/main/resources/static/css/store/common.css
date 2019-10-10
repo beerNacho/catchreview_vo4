@@ -1,0 +1,29 @@
+/* 정규화*/
+@charset 'utf-8';
+*{margin : 0;padding : 0; box-sizing: border-box;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+body,table,input,textarea,button,select{font-family:'Hind', sans-serif;font-size:12px;color:#222;}
+ul,ol{list-style:none}
+a{color:#222;text-decoration:none;cursor:pointer}
+a:hover{color:#222;text-decoration:underline}
+a img{border:0}
+button{cursor:pointer}
+menu{margin:0;padding:0}
+fieldset{border:0;margin:0;padding:0}
+em,address{font-style:normal}
+table caption{display:none}
+table{border-collapse:separate;border-collapse:collapse;empty-cells:show}
+abbr,acronym { border:0;} 
+body{
+	margin:0 auto;
+}
+div #wrap{
+	width : inherit;
+	height : inherit;
+	margin : 0 auto;
+}
+/*사이트 지원 최소 해상도 : 1280x1024px*/
+div.centerWrap{
+	width:1280px;
+	margin:0 auto;
+}

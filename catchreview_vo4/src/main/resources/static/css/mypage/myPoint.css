@@ -1,0 +1,229 @@
+#sectionHead{
+		height:40px;
+		border-bottom : 1px solid #EDEDED;
+		margin-top : 10px;
+	}
+	#sectionHead ul{
+		padding : 8px;
+		float : right;
+	
+		
+	}
+	#sectionHead li{
+		display: inline;
+		padding:5px;
+		font-size:12.5px;
+	}
+	
+	
+#topBox{
+	margin-top : 20px;
+	display: block;
+	height:100px;
+}
+#topBox #left{
+	float : left;
+}
+#topBox #left p{
+	font-size : 20px;
+	padding : 30px;
+}
+#topBox #right{
+	float : right;
+	width:700px;
+}
+#topBox li{
+	width: 100px;
+	height: 100px;
+	float: right;
+	display: inline-block;
+	margin: 0 1.25% 0 0;
+	border: 2px solid #eee;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	text-align: center;
+	color: #666;
+	padding-top : 40px;
+}
+#topBox li:hover{
+	border-color : #000000;
+}
+#topBox a{
+	text-decoration: none;
+	font-size : 13.7px;
+}
+#middleBox{
+	width:1280px;
+	height:250px;
+	background-color: #F7F9F8;
+	border : 1px solid #E3E3E3;
+	margin-top : 20px;
+	display: flex;
+	flex-direction: row;
+	margin-bottom : 40px;
+}
+#middleBox #user{
+	float:left;
+	width:280px;
+	height:200px;
+	border-right : 1px solid #E1E3E2;
+	margin-top : 25px;
+}
+#user>img{
+	margin-left : 90px;
+	margin-top : 20px;
+}
+#user p{
+	text-align: center;
+	font-size : 13.7px;
+	margin-top : 10px;
+	color : #000000;
+	font-weight : bold;
+}
+#middleBox #userInfo{
+	float:right;
+	width:999px;
+	height:250px;
+	display: flex;
+	flex-direction: row;
+}
+.box{
+	width:350px;
+	height:200px;
+	border-right : 1px solid #E1E3E2;
+	margin-top : 25px;
+	padding : 50px;
+}
+.box p{
+	font-size:20px;
+	font-weight:bold;
+	margin-left : 70px;
+	margin-bottom : 40px;
+}
+.box span{
+	font-size:18px;
+	color : #000000;
+	font-weight:bold;
+	width:100%;
+	display: block;
+	text-align : center;
+}
+#review{
+	width:1280px;
+	border : 1px solid #E3E3E3;
+	margin-top : 20px;
+	display: flex;
+	flex-direction: row;
+	margin-bottom : 40px;
+}
+#review table{
+	width:1280px;
+	margin-top : 20px;
+	display: flex;
+	flex-direction: row;
+	margin-bottom : 40px;
+	background-color: transparent;
+	border-spacing: 0;
+	display: table;
+	border-color : grey;
+	margin:0 auto;
+	text-align:none;
+}
+#review th{
+	background-color: #000000;
+	color: white;
+	padding : 10px;
+	width:80px;
+	text-align : center;
+}
+#review td{
+	background-color: white;
+	padding: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #666;
+	border-top: none;
+	border-bottom: 1px solid #eee;
+	text-align: center;
+}
+#recentStore{
+	width:1280px;
+	height:400px;
+	border : 1px solid #E3E3E3;
+	margin-top : 20px;
+	display: flex;
+	flex-direction: row;
+	margin-bottom : 40px;
+}
+.storeInfor{
+	width:300px;
+	height:350px;
+	border: 1px solid #eee;
+	margin-top : 25px;
+	margin-left : 10px;
+	display: flex;
+	flex-direction: column;
+}
+.picture{
+	width:300px;
+	height:250px;
+}
+.picture img{
+	width:300px;
+	height:250px;
+}
+.storeInfor ul{
+	padding : 10px;
+}
+.storeInfor li{
+	margin-bottom : 5px;
+}
+.storeInfor dd{
+	display: inline-block;
+	margin-right : 24px;
+}
+h4{
+	font-size : 13.7px;
+}
+#visitStore{
+	width:1280px;
+	height:400px;
+	border : 1px solid #E3E3E3;
+	margin-top : 20px;
+	display: flex;
+	flex-direction: row;
+	margin-bottom : 40px;
+}
+#visitStore p{
+	padding : 200px;
+	padding-left:600px;
+	font-size : 15px;
+}
+h3{
+	font-size:20px;
+	display: inline-block;
+}
+
+
+/* �����ʹڽ� */
+
+#setProfile{
+	width: 30px;
+    height: 30px;
+    position: relative;
+    bottom: 30px;
+    left: 175px;
+}
+#setProfile img{
+    width: 30px;
+    height: 30px;
+}
+
+
+
+.selected{
+	color : #ffffff;
+	font-weight : bold;
+}

@@ -1,0 +1,197 @@
+/* ¸®ºä ÀÛ¼º Ã¢ */
+#blockOut{
+	position : fixed;
+	width:100%; height : 100%;
+	background-color: #111;
+	top: 0; bottom: 0; left: 0; right: 0;
+	opacity: 0.5;
+}
+#write_screen{
+	width:700px;
+	background-color: #e0e2e7;
+	border-bottom: 3px solid #2a2a34;
+	display: flex;
+	flex-direction: column;
+}
+#write_text_box{
+	width : 100%;
+	height : 40px;
+	background-color: #2a2a34;
+	color: #b0c4e5;
+	display: relative;
+}
+#replyHead{
+	margin-right : 250px; 
+	display: block;
+	color : #fff; 
+	padding : 5px 0 0 20px;
+	font-size : 20px;
+}
+#write_text_box > img{
+	padding : 10px;
+	padding-left : 20px;
+}
+#write_content_box{
+	width : 650px;
+	display: block;
+	margin : 20px 0 0 20px;
+}
+#write_reply{
+	margin-bottom : 50px;
+	background-color: #F5F8FA;
+	width : 650px;
+	margin-left : 20px;
+	border-top : 1px solid #F5F8FA;
+	border-left : 1px solid #c0c5cd;
+	border-right : 1px solid #c0c5cd;
+	display: flex;
+	flex-direction: column;
+}
+#storeInfor{
+	margin : 10px 70px 10px 80px;
+	color:#00A7B3;
+	font-weight:bold;
+	font-size:18px;
+	float:right;
+	position:relative;
+}
+#storeInfor > li{
+	display: inline-block;
+	margin-right:5px;
+}
+#storeName{
+	position:absolute;
+	top:10px;
+}
+#write_replyInput{
+	width:570px;
+	margin : 0 auto;
+	margin-top : 10px;
+	margin-bottom : 10px;
+	display: flex;
+	flex-direction: column;
+}
+#write_replyContent{
+	margin-left: 40px;
+	display: flex;
+	flex-direction: row;
+}
+#write_replyContent > img {
+	width: 40px; height: 40px;
+	margin-right : 30px;
+}
+#write_replyInput input[type=text]{
+	width : 500px;
+	height:40px;
+	border : 1px solid #00A7B3;
+	border-bottom : 1px solid #fff;
+	padding-left : 20px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+textarea{
+	width: 500px;
+    border: 1px solid #00A7B3;
+    border-top: 1px solid #fff;
+    padding-left: 20px;
+    padding-top:10px;
+    height:90px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+#write_replyButton{
+	width:500px;
+	margin-left : 40px;
+	margin-top:10px;
+}
+#write_replyButton ul{
+	padding : 10px 10px 10px 10px;
+	position:relative;
+}
+#write_replyButton li{
+	display: inline-block;
+	margin-right : 5px;
+	color : #00A7B3;
+	text-align: center;
+}
+#write_replyButton img{
+	border-radius: 10px;
+	width:45px;
+	height:40px;
+}
+#write_replyView{
+	width:1200px;
+	margin : 0 auto;
+	margin-top : 10px;
+	margin-bottom : 10px;
+	display: flex;
+	flex-direction: column;
+}
+#btn_reply, #btn_submit{
+	border: 1px solid #0097D3;
+	border-radius: 0;
+	background-color: #00A7B3;
+	color: #fff;
+	text-align:center;
+	font-weight: bold;
+	width : 65px;
+	height: 30px;
+	font-size : 13px;
+	border-radius: 20px;
+}
+.btn_close{
+	cursor:pointer;
+	position:absolute;
+	top:0px;
+	right:0px;
+}
+#userimg{
+	width:500px;
+	height:300px;
+	margin-left:40px;
+	margin-top : 10px;
+	border-radius: 10px;
+    border: 1px solid #00A7B3;
+}
+.borderLayout{
+	border: 2px solid #00A7B3;
+}
+#iconFile, #iconFile2{
+	position:absolute;
+	top :0px;
+	left:0px;
+	z-index:500;
+	opacity: 0;
+	width:65px;
+	height: 30px;
+}
+#imgIcon{
+	position:relative;
+}
+.btnImgIcon{
+	background-color: #00A7B3;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    width: 65px;
+    height: 30px;
+    font-size: 13px;
+    border-radius: 20px;
+    border: none;
+}
+#image_section{
+	width:500px;
+	height:300px;
+}
+
+#textBox{
+	position:relative;
+}
+.line{
+	position:absolute;
+	top:40px;
+	left:20px;
+	width:450px;
+	height:1px;
+	border-top: 1px solid #00A7B3;;
+}

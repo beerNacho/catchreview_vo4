@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout/defaultLayout}">
+<head>
+<meta charset="utf-8">
+<th:block layout:fragment="pageCustomCss">
+    <link rel="stylesheet" th:href="@{/css/store/storeRegist.css}">
+</th:block>
+</head>
+
+<th:block layout:fragment="content">
+
+	<!-- index 메인 -->
+	<section class="container" style="width: 1280px;">
+			<form>
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+				<div class="centerWrap">
+					<div id="sectionHead">
+						<ul>
+							<li><a href="index.jsp">Home</a> >&nbsp;</li>
+							<li>가게 소개 페이지</li>
+						</ul>
+					</div>
+					<article id="topBox">
+						<div id="head">
+							<h1 style="display: flex; flex-direction: row;">
+								<div id="storeName" class="none"></div>
+								<input type="text" id="titleInput" placeholder="가게명을 입력하세요."
+									name="storeName" class="form-control">
+							</h1>
+
+							<ul>
+								<li style="display: flex; flex-direction: row;">현상금 :
+									&nbsp;&nbsp;
+									<div id="price" class="none" style="display: inline;"></div> <input
+									type="text" class="form-control" id="txt_money"
+									name="rewardAmounts">
+									&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+								</li>
+								<li>기간 :&nbsp;&nbsp;&nbsp;&nbsp;
+									<div id="label_pre" style="display: none;"></div> <input
+									type="text" name="fromDate" id="txt_pre" class="datepicker" 
+									autocomplete="off"> ~
+									<div id="label_last" style="display: none;"></div> <input
+									type="text" name="toDate" id="txt_last" class="datepicker"
+									autocomplete="off">&nbsp;&nbsp;&nbsp;
+								</li>
+							</ul>
+						</div>
+						<div id="content">
+							<div id="best_review">
+								<div id="review_head">
+									<h2>리뷰 하이라이트</h2>
+								</div>
+								<div id="review_box" style="background-color: #eee;">
+									<ul style="font-weight: bold; font-size: 15px;">
+										<li style="margin-top: 150px; margin-left: 40px;">Best
+											Review가 표시되는 화면입니다</li>
+									</ul>
+								</div>
+							</div>
+							<div id="photo">
+
+								<div id="left">
+									<input type="file" name="filename1" value="사진 등록하기">
+								</div>
+								<div id="right">
+									<div class="right_photo">
+									<input type="file" name="filename2" value="사진 등록하기">
+									</div>
+									<div class="right_photo">
+									<input type="file" name="filename3" value="사진 등록하기">
+									</div>
+									<div class="right_photo">
+									<input type="file" name="filename4" value="사진 등록하기">
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</article>
+					<article id="middleBox">
+						<div class="content" style="margin-left: 0; margin-right: 35px;">
+							<div class="content_head">
+								<h2>가게정보뷰</h2>
+							</div>
+							<div class="content_body"
+								style="height: 360px; background-color: #eee;">
+								<ul style="font-weight: bold; font-size: 15px;">
+									<li
+										style="margin-top: 150px; margin-left: 40px; display: inline-block;">가게의
+										현상금 정보와 1~3위 Review가</li>
+									<li
+										style="margin-top: 20px; margin-left: 100px; display: inline-block;">표시되는
+										화면입니다</li>
+								</ul>
+							</div>
+						</div>
+						<div class="content" style="margin-right: 35px">
+							<div class="content_head" style="margin-bottom: 10px;">
+								<h2>소개</h2>
+								<dl>
+									<dd>
+										<textarea id="txt_infor" placeholder="가게 소개 내용을 입력해주세요."
+											name="storeIntro"></textarea>
+									</dd>
+								</dl>
+							</div>
+							<div class="content_body" style="height: 100px;">
+								<div class="content_box">
+									<div class="left_box" style="padding-top: 20px; width: 100px;">영업시간</div>
+									<div class="right_box" style="width: 260px;">
+										<dl>
+											<dt style="margin-bottom: 5px; padding-top: 10px;">
+												<div id="label_1" style="display: none;"></div>
+												<input type="text" id="txt_1" class="timeInfor"
+													autocomplete="off" name="businessTime">
+											</dt>
+										</dl>
+									</div>
+									<div class="left_box" style="padding-top: 20px; width: 100px;">
+										영업휴일</div>
+									<div class="right_box" style="padding-top: 15px; width: 260px;">
+										<div id="label_3" style="display: none;"></div>
+										<input type="text" class="timeInfor" id="txt_3"
+											name="storeHoliday">
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="content">
+							<div class="content_head" style="margin-bottom: 10px;">
+								<h2>문의하기</h2>
+							</div>
+							<div class="content_body">
+								<div id="img_box"></div>
+								<div class="content_box" style="height: 30px;">
+									<div class="left_box" style="height: 30px;">위치</div>
+									<div class="right_box"
+										style="height: 30px; position: relative;">
+										<div id="qna_1" style="display: none;"></div>
+										<input type="text" class="rightInput" id="txt_qna1"
+											placeholder="주소" name="storeAddress1"> <input
+											type="button" onclick="sample6_execDaumPostcode()"
+											style="width: 60px; height: 30px; font-weight: normal; margin-left: 10px; border: 1px solid #d7dbe2; background-color: #fff; color: black; margin-bottom: 10px; position: absolute; top: 5px; right: -5px;"
+											value="검색">
+									</div>
+								</div>
+								<div class="content_box" style="height: 30px;">
+									<div class="left_box" style="height: 30px;">상세주소</div>
+									<div class="right_box" style="height: 30px;">
+										<div id="qna_2" style="display: none;"></div>
+										<input type="text" id="txt_qna2" class="rightInput"
+											name="storeAddress2">
+									</div>
+								</div>
+								<div class="content_box" style="height: 30px;">
+									<div class="left_box" style="height: 30px;">전화번호</div>
+									<div class="right_box" style="height: 30px;">
+										<div id="qna_3" style="display: none;"></div>
+										<input type="text" id="txt_qna3" class="rightInput"
+											name="storePhone">
+									</div>
+								</div>
+								<div class="content_box" style="height: 30px;">
+									<div class="left_box" style="height: 30px;">예약하기</div>
+									<div class="right_box" style="height: 30px;">
+										<div id="qna_4" style="display: none;"></div>
+										<input type="text" id="txt_qna4" class="rightInput">
+									</div>
+								</div>
+							</div>
+						</div>
+					</article>
+					<div id="buttonSection">
+						<input type="button" id="btn_join" value="확인"><input type="button"
+							value="취소">
+					</div>
+				</div>
+			</form>
+		</section>
+</th:block>
+
+<th:block layout:fragment="pageCustomScript">
+<script th:src="@{/js/store/storeRegist.js}"></script>
+<script th:inline="javascript">
+var StoreAdd = function(obj){
+	console.log("add...");
+	
+	$.ajax({
+		type:'post',
+		url: '/store/' + obj.uid,
+		data: JSON.stringify(obj),
+		dataType: 'json',
+		beforeSend : function(xhr){
+			xhr.setRequestHeader(obj.csrf.headerName, obj.csrf.token);
+		},
+		contentType: "application/json",
+		success: location.href="/mypage/store"
+	});
+};
+
+$("#btn_join").on("click", function(){
+	var uid = [[${#authentication.principal.member.id}]];
+	
+	var businessTime = $("input[name='businessTime']").val();
+	
+	var storeIntro = $("input[name='storeIntro']").val();
+	
+	var storeHoliday = $("input[name='storeHoliday']").val();
+	
+	var storeaddress1 = $("input[name='storeaddress1']").val();
+	
+	var storeaddress2 = $("input[name='storeaddress2']").val();
+	
+	var storeName = $("input[name='storeName']").val();
+	
+	var storePhone = $("input[name='storePhone']").val();
+	
+	var csrf= JSON.parse('[[${_csrf}]]');
+	
+	var obj = {uid:uid, businessTime:businessTime, storeIntro:storeIntro, storeHoliday:storeHoliday, storeaddress1:storeaddress1, storeaddress2:storeaddress2, storeName:storeName, storePhone:storePhone, csrf:csrf};
+	
+	alert(obj);
+	
+	StoreAdd(obj);
+	
+});
+</script>
+</th:block>
+
+</html>

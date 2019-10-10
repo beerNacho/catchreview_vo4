@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout/defaultLayout}">
+
+
+<head>
+<meta charset="utf-8">
+<th:block layout:fragment="pageCustomCss">
+	<link rel="stylesheet" th:href="@{/css/join/loginForm.css}">
+</th:block>
+</head>
+
+
+<div layout:fragment="content">
+
+	<div id="section-1" class="container">
+
+		<div class="card bg-light">
+			<article class="card-body mx-auto">
+				<h4 class="card-title mt-3 text-center">Login Account</h4>
+				<br>
+				<p>
+					<a href="" class="btn btn-block btn-twitter"> <i
+						class="fab fa-twitter"></i>   Login via Twitter
+					</a> <a href="" class="btn btn-block btn-facebook"> <i
+						class="fab fa-facebook-f"></i>   Login via facebook
+					</a>
+				</p>
+				<div th:if="${param.error != null}">
+					<h3 class="card-title mt-3 text-center">Invalid id or password</h3>
+					<h2 th:value="${param.error}"></h2>
+				</div>
+				<div th:if="${param.logout != null}">
+					<h3 class="card-title mt-3 text-center">You have been logged out.</h3>
+				</div>
+				<p class="divider-text">
+					<span class="bg-light">OR</span>
+				</p>
+				<div id="section-1" class="container">
+					<div class="row">
+						<div class="loginSection">
+							<div class="account-wall">
+								<img class="profile-img"
+									src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+									alt="">
+								<form class="form-signin" method="post" th:action="@{/join/loginProcess}">
+									<input type="text" class="form-control" name="username"
+										placeholder="id" required autofocus> <input
+										type="password" class="form-control" name="password"
+										placeholder="Password" required>
+									<p id="loginFail" class="checkResult"></p>
+									<button class="btn btn-lg btn-primary btn-block" type="submit">
+										Sign in</button>
+									<label class="checkbox pull-left"> <input
+										type="checkbox" value="remember-me" style="margin-left: 10px;" id="remember-me" name="">
+										<p style="margin-left : 30px;">Remember me</p>
+									</label> <a href="#" class="pull-right need-help">Need help? </a><span
+										class="clearfix"></span>
+									
+								</form>
+							</div>
+							<a th:href="@{/join/memberJoin}" class="text-center new-account">Create
+								an account </a>
+						</div>
+					</div>
+				</div>
+			</article>
+		</div>
+		<!-- card.// -->
+
+	</div>
+
+</div>
+
+<!-- end fragment -->
+
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+		
+	</script>
+</th:block>

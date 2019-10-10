@@ -42,16 +42,22 @@ public class LoginController {
 		System.out.println(password);
 		
 		Optional<Member> mem = memberRepo.findByUemail(email);
-		Member member = mem.get();
-		if(password.equals(member.getUpw())) {
-			session.setAttribute("memberVo", member);
+		if(mem.isPresent()) {
+			Member member = mem.get();
+			if(password.equals(member.getUpw())) {
+				session.setAttribute("memberVo", member);
+				mv.setViewName("redirect:/");
+				return mv;
+			} else {
+				System.out.println("비밀번호가 틀렸습니다.");
+				mv.setViewName("redirect:/join/login");
+				return mv;
+			}
 		} else {
+			System.out.println("아이디가 존재하지 않습니다.");
 			mv.setViewName("redirect:/join/login");
 			return mv;
 		}
-		
-		mv.setViewName("redirect:/");
-		return mv;
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)

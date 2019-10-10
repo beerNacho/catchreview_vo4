@@ -24,14 +24,14 @@
 				<article id="topBox">
 					<div id="left">
 						<p>
-							[[${#authentication.principal.member.uname}]] 님은
+							[[${session.memberVo.uname}]] 님은
 							Gold 회원등급 입니다.
 						</p>
 					</div>
 					<div id="right">
 						<ul>
 							<a th:href="@{/join/memberUpdate}"><li>내 정보수정</li></a>
-							<a th:href="@{/mypage/store(id=${#authentication.principal.member.id})}"><li>MY 가게</li></a>
+							<a th:href="@{/mypage/store(id=${session.memberVo.id})}"><li>MY 가게</li></a>
 							<a th:href="@{/mypage/point}"><li>포인트</li></a>
 							<a th:href="@{/mypage/review}"><li>MY 리뷰</li></a>
 					</ul>
@@ -45,7 +45,7 @@
 							<img src="../images/common/setting.png">
 						</div>
 
-						<p>[[${#authentication.principal.member.uname}]]님
+						<p>[[${session.memberVo.uname}]]님
 						</p>
 						<p>Gold</p>
 					</div>

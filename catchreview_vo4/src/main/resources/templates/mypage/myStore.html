@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{/layout/defaultLayout}">
 <head>
@@ -24,7 +23,7 @@
 			</div>
 			<article id="topBox">
 				<div id="left">
-					<p>[[${#authentication.principal.member.uname}]] 님은 Gold 회원등급
+					<p>[[${session.memberVo.uname}]] 님은 Gold 회원등급
 						입니다.</p>
 				</div>
 				<div id="right">
@@ -44,7 +43,7 @@
 						<img src="../images/common/setting.png">
 					</div>
 
-					<p>[[${#authentication.principal.member.uname}]]님</p>
+					<p>[[${session.memberVo.uname}]]님</p>
 					<p>Gold</p>
 				</div>
 				<div id="userInfo">
@@ -97,7 +96,7 @@
 	<script th:src="@{/js/store/storeList.js}"></script>
 	<script th:inline="javascript">
 	
-	var id = [[${#authentication.principal.member.id}]];
+	var id = [[${session.memberVo.id}]];
 	
 	var obj = {id:id};
 	

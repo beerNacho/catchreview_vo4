@@ -33,7 +33,7 @@ public class QnaBoardController {
 	
 	@Autowired
 	private QnaReplyRepository replyRepo;
-	
+	 
 	@Autowired
 	private S3UploaderService s3Uploader;
 	

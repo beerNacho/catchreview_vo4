@@ -4,13 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,9 +23,9 @@ public class RestStoreController {
 	
 	@Autowired
 	StoreRepository storeRepo;
-	
+	/*
 	@Transactional
-	@PostMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	@PostMapping(value = "/{id}")
 	public ResponseEntity<List<Store>> save(@PathVariable("id") Long id, @RequestBody Store store) {
 		System.out.println("USER ID : " + id);
 		
@@ -37,12 +33,12 @@ public class RestStoreController {
 		member.setId(id);
 		store.setUser(member);
 		
-		storeRepo.save(store);
+//		storeRepo.save(store);
 		
 		log.info("POST : getListMyMember------------" + getListByMember(member));
 		return new ResponseEntity<>(getListByMember(member), HttpStatus.CREATED);
 	}
-	
+	*/
 	@GetMapping("/{id}")
 	private ResponseEntity<List<Store>> getStores(@PathVariable("id") Long id) {
 		System.out.println("getListStoreById=======================================");

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{/layout/defaultLayout}">
 <head>
@@ -15,8 +14,7 @@
 
 	<!-- index 메인 -->
 	<section class="container" style="width: 1280px;">
-			<form>
-				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+			<form id="form_upload" enctype="multipart/form-data" th:action="@{/store/storeRegist(id=${session.memberVo.id})}" method="post">
 				<div class="centerWrap">
 					<div id="sectionHead">
 						<ul>
@@ -65,17 +63,21 @@
 							<div id="photo">
 
 								<div id="left">
-									<input type="file" name="filename1" value="사진 등록하기">
+									<input type="file" name="file1" value="사진 등록하기">
+									<input type="hidden" name="filename1">
 								</div>
 								<div id="right">
 									<div class="right_photo">
-									<input type="file" name="filename2" value="사진 등록하기">
+									<input type="file" name="file2" value="사진 등록하기">
+									<input type="hidden" name="filename2">
 									</div>
 									<div class="right_photo">
-									<input type="file" name="filename3" value="사진 등록하기">
+									<input type="file" name="file3" value="사진 등록하기">
+									<input type="hidden" name="filename3">
 									</div>
 									<div class="right_photo">
-									<input type="file" name="filename4" value="사진 등록하기">
+									<input type="file" name="file4" value="사진 등록하기">
+									<input type="hidden" name="filename4">
 									</div>
 
 								</div>
@@ -177,7 +179,7 @@
 						</div>
 					</article>
 					<div id="buttonSection">
-						<input type="button" id="btn_join" value="확인"><input type="button"
+						<input type="submit" id="btn_join" value="확인"><input type="button"
 							value="취소">
 					</div>
 				</div>
@@ -188,47 +190,25 @@
 <th:block layout:fragment="pageCustomScript">
 <script th:src="@{/js/store/storeRegist.js}"></script>
 <script th:inline="javascript">
-var StoreAdd = function(obj){
-	console.log("add...");
-	
-	$.ajax({
-		type:'post',
-		url: '/store/' + obj.uid,
-		data: JSON.stringify(obj),
-		dataType: 'json',
-		beforeSend : function(xhr){
-			xhr.setRequestHeader(obj.csrf.headerName, obj.csrf.token);
-		},
-		contentType: "application/json",
-		success: location.href="/mypage/store"
-	});
-};
-
-$("#btn_join").on("click", function(){
-	var uid = [[${#authentication.principal.member.id}]];
-	
-	var businessTime = $("input[name='businessTime']").val();
-	
-	var storeIntro = $("input[name='storeIntro']").val();
-	
-	var storeHoliday = $("input[name='storeHoliday']").val();
-	
-	var storeaddress1 = $("input[name='storeaddress1']").val();
-	
-	var storeaddress2 = $("input[name='storeaddress2']").val();
-	
-	var storeName = $("input[name='storeName']").val();
-	
-	var storePhone = $("input[name='storePhone']").val();
-	
-	var csrf= JSON.parse('[[${_csrf}]]');
-	
-	var obj = {uid:uid, businessTime:businessTime, storeIntro:storeIntro, storeHoliday:storeHoliday, storeaddress1:storeaddress1, storeaddress2:storeaddress2, storeName:storeName, storePhone:storePhone, csrf:csrf};
-	
-	alert(obj);
-	
-	StoreAdd(obj);
-	
+$('#file1').on('change', function(){
+	 var file = $('#singleFileUploadInput').val();
+	 var filename = file.substring(12);
+  	  $('#filename1').attr('value', filename);
+ });
+$('#file2').on('change', function(){
+	 var file = $('#singleFileUploadInput').val();
+	 var filename = file.substring(12);
+ 	  $('#filename2').attr('value', filename);
+});
+$('#file3').on('change', function(){
+	 var file = $('#singleFileUploadInput').val();
+	 var filename = file.substring(12);
+ 	  $('#filename3').attr('value', filename);
+});
+$('#file4').on('change', function(){
+	 var file = $('#singleFileUploadInput').val();
+	 var filename = file.substring(12);
+ 	  $('#filename4').attr('value', filename);
 });
 </script>
 </th:block>

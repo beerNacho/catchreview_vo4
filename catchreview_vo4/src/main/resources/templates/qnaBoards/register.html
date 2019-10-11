@@ -71,10 +71,7 @@
 							</tbody>
 						</table>
 					</form>
-					<div class="upload-response">
-					<div id="singleFileUploadError"></div>
-					<div id="singleFileUploadSuccess"></div>
-				</div>
+
 				</div>
 
 
@@ -85,7 +82,6 @@
 </div>
 
 <th:block layout:fragment="pageCustomScript">
-<script th:inline="javascript" th:src="@{'/js/fileUpload.js'}"></script>
 <script th:inline="javascript">
 
 	window.onload = function(){
@@ -136,5 +132,5 @@
 		}
 
 	</script>
-<script th:src="@{/js/qnaBoard/fileUpload.js}"></script>
+
 </th:block>

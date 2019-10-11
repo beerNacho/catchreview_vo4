@@ -42,6 +42,14 @@ public class Store {
 	
 	private String sotreIntro;
 	
+	private String filename1;
+	
+	private String filename2;
+	
+	private String filename3;
+	
+	private String filename4;
+	
 	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Member user;

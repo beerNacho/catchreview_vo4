@@ -68,6 +68,8 @@ public class QnaBoardController {
 		log.info("file : " + multipartFile);
 		
 		qnaBoardRepo.save(vo);
+		
+		//s3Uploader.uploadfile(multipartFile);
 		rttr.addFlashAttribute("msg", "success");
 //		String filename = s3Uploader.uploadfile(multipartFile);
 //		

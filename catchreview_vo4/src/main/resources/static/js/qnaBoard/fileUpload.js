@@ -1,25 +1,23 @@
 function uploadSingleFile(obj, file) {
-    var formData = new FormData();
+    var formData = new FormData(document.getElementById('form_upload'));
     formData.append("file", file);
     formData.append("vo", obj);
     alert("함수 안으로 들어옴");
     alert(obj.writer);
-
-    var xhr = new XMLHttpRequest();
-    
     
     xhr.onload = function() {
     	$.ajax({
     		type:'post',
     		url: '/qnaBoards/register',
-    		data: JSON.stringify(obj),
-    		dataType: 'json',
-    		contentType: "application/json",
-    		success: location.href=alert('성공')
+    		data: form,
+    		dataType : 'json',
+    		processData : false,
+    		contentType: false,
+    		success: alert('성공')
     	});
     }
 
-    xhr.open("POST", "/register");
+    xhr.open("POST", "http://localhost:8082/qnaBoards/register");
     
     xhr.send(formData);
 }

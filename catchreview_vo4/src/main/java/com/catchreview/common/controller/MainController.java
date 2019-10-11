@@ -25,6 +25,13 @@ public class MainController {
 
 		return "mypage/mypageMain";
 	}
+	
+	@GetMapping("/hello")
+	public String hello() {
+		log.info("hello");
+
+		return "hello";
+	}
 
 //	@PostMapping("/upload")
 //	@ResponseBody

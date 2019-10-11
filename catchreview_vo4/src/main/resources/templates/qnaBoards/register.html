@@ -23,7 +23,7 @@
 
 			<div id="listSection">
 				<div class="container">
-					<form id="form_upload" enctype="multipart/form-data" th:action="@{register}">
+					<form id="singleUploadForm" th:name="singleUploadForm" method='post' enctype="multipart/form-data">
 						<table class="table"
 							style="text-align: center; border: 1px solid #dddddd">
 							<thead>
@@ -46,24 +46,24 @@
 								<tr th:with="member=${session.memberVo}">
 									<td style="background-color: #fafafa; text-align: center;"><h5>작성자</h5></td>
 									<td><input class="form-control" type="text" name="writer"
-										th:value="${member.uemail}" readonly="readonly"
+										th:value="${session.memberVo.uemail}" readonly="readonly"
 										id="registerAge" size="20"></td>
 								</tr>
 								<tr>
 									<td style="background-color: #fafafa; text-align: center;"><h5>첨부파일</h5></td>
 									<td>
-									<input class="form-control" type="text" id="btn_file"
+									<input class="form-control" type="text" id="btn_file" name="filename"
 										readonly placeholder="클릭해주세요." size="20">
 										
-										<input type="file" id="singleFileUploadInput" name="fileName"
-										style="display: none;">
+										<input type="file" id="singleFileUploadInput" name="file"
+										class="file-input" required style="display: none;">
 										
 										</td>
 								</tr>
 								<tr>
 									<td colspan="2">
 									<button class="btn btn-primary pull-right"
-											type="button" id="btn_submit"
+											type="submit" id="btn_submit"
 											style="background-color: #000000; color: #ffffff; margin-left:20px;">등록</button>
 											<button type="reset" class="btn btn-default pull-right">Reset</button>
 											</td>
@@ -71,6 +71,10 @@
 							</tbody>
 						</table>
 					</form>
+					<div class="upload-response">
+					<div id="singleFileUploadError"></div>
+					<div id="singleFileUploadSuccess"></div>
+				</div>
 				</div>
 
 
@@ -81,8 +85,11 @@
 </div>
 
 <th:block layout:fragment="pageCustomScript">
+<script th:inline="javascript" th:src="@{'/js/fileUpload.js'}"></script>
 <script th:inline="javascript">
+
 	window.onload = function(){
+		
 		 $('#btn_file').on('click', function(){
       	  $('#singleFileUploadInput').trigger('click');
       	  
@@ -91,12 +98,13 @@
 		 
 		 $('#singleFileUploadInput').on('change', function(){
 			 var file = $('#singleFileUploadInput').val();
-			 var fileName = file.substring(12);
-	       	  $('#btn_file').attr('value', fileName);
+			 var filename = file.substring(12);
+			 alert(filename);
+	       	  $('#btn_file').attr('value', filename);
 	      });
 		 
 		 
-		 
+		 /*
 		 $("#btn_submit").on("click", function(){
 				
 				var title = $("input[name='title']").val();
@@ -123,7 +131,10 @@
 			    event.preventDefault();
 				
 			});
+		 
+		 */
 		}
+
 	</script>
 <script th:src="@{/js/qnaBoard/fileUpload.js}"></script>
 </th:block>

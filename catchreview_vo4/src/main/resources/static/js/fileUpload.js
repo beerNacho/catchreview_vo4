@@ -10,10 +10,10 @@ var multipleFileUploadInput = document.querySelector('#multipleFileUploadInput')
 var multipleFileUploadError = document.querySelector('#multipleFileUploadError');
 var multipleFileUploadSuccess = document.querySelector('#multipleFileUploadSuccess');
 
-function uploadSingleFile(file, obj) {
+function uploadSingleFile(file) {
     var formData = new FormData();
     formData.append("file", file);
-    alert(obj);
+
 
     var xhr = new XMLHttpRequest();
     
@@ -26,6 +26,7 @@ function uploadSingleFile(file, obj) {
         alert(xhr.responseText);
         if(xhr.status == 200) {
         	alert('성공?');
+        	alert(response.fileDownloadUri);
             singleFileUploadError.style.display = "none";
             singleFileUploadSuccess.innerHTML = "<p>File Uploaded Successfully.</p><p>DownloadUrl : <a href='" + response.fileDownloadUri + "' target='_blank'>" + response.fileDownloadUri + "</a></p>";
             singleFileUploadSuccess.style.display = "block";
@@ -75,14 +76,12 @@ singleUploadForm.addEventListener('submit', function(event){
 	
     var files = singleFileUploadInput.files;
     alert('됨?' + files.length);
-    var csrf = JSON.parse('[[${_csrf}]]');
-    var obj = {csrf:csrf};
     alert(files.length);
     if(files.length === 0) {
         singleFileUploadError.innerHTML = "Please select a file";
         singleFileUploadError.style.display = "block";
     }
-    uploadSingleFile(files[0], obj);
+    uploadSingleFile(files[0]);
     event.preventDefault();
 }, true);
 

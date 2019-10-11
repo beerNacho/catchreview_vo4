@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.catchreview.common.awsUpload.S3UploaderService;
 import com.catchreview.qnaBoard.domain.QnaBoard;
 import com.catchreview.qnaBoard.persistence.CustomCrudRepository;
 import com.catchreview.qnaBoard.persistence.QnaReplyRepository;
@@ -34,8 +34,8 @@ public class QnaBoardController {
 	@Autowired
 	private QnaReplyRepository replyRepo;
 	
-//	@Autowired
-//	private S3UploaderService s3Uploader;
+	@Autowired
+	private S3UploaderService s3Uploader;
 	
 	
 	
@@ -61,14 +61,14 @@ public class QnaBoardController {
 		log.info("register get");
 	}
 	
-	@ResponseBody
 	@PostMapping("/register")
 	public String resgisterPost(@ModelAttribute("vo")QnaBoard vo, RedirectAttributes rttr, @RequestParam("file")MultipartFile multipartFile) {
 		log.info("register post");
 		log.info("" + vo);
 		log.info("file : " + multipartFile);
-//		repo.save(vo);
-//		rttr.addFlashAttribute("msg", "success");
+		
+		qnaBoardRepo.save(vo);
+		rttr.addFlashAttribute("msg", "success");
 //		String filename = s3Uploader.uploadfile(multipartFile);
 //		
 		
@@ -115,6 +115,13 @@ public class QnaBoardController {
 	public String delete(Long bno, PageVO vo, RedirectAttributes rttr) {
 		log.info("DELETE BNO: " + bno);
 		
+//		Optional<QnaBoard> opBoard = qnaBoardRepo.findById(bno);
+//		QnaBoard board = opBoard.get();
+		
+
+		
+		log.info("DELETE Replies Complete");
+		
 		qnaBoardRepo.deleteById(bno);
 		
 		
@@ -126,6 +133,5 @@ public class QnaBoardController {
 		
 		return "redirect:/qnaBoards/list";
 	}
-	
 	
 }

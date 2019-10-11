@@ -39,5 +39,7 @@ public interface QnaBoardRepository extends CrudRepository<QnaBoard, Long>,
 		
 		return builder;
 	}
+	
+	
 
 }

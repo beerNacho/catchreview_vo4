@@ -46,7 +46,7 @@
 							<tr>
 								<td style="background-color: #fafafa; text-align: center;"><h5>첨부파일</h5></td>
 								<td>
-								<input class="form-control" type="text" name="email" readonly th:value="${vo.writer}" size="20">
+								<input class="form-control" type="text" id="btn_download" name="filename" readonly th:value="${vo.filename}" size="20">
 									</td>
 							</tr>
 							<tr>
@@ -285,6 +285,14 @@
 		
 		$(".closeBtn").on("click", function(){
 			$("#modal").hide();
+		});
+		
+		$("#btn_download").on("click", function(){
+			var filename = $("input[name='filename']").val();
+			alert("filename : " + filename);
+			var downloadurl = "http://localhost:8082/downloadFile/" +filename; 
+			
+			location.href=downloadurl;
 		});
 		
 	});

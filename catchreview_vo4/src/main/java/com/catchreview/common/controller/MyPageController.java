@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.catchreview.common.persistence.MyStoreRepository;
 import com.catchreview.common.vo.PageMaker;
 import com.catchreview.common.vo.PageVO;
+import com.catchreview.reward.persistence.RewardRepository;
 import com.catchreview.store.domain.Store;
 
 import lombok.extern.java.Log;
@@ -24,6 +25,9 @@ public class MyPageController {
 	
 	@Autowired
 	private MyStoreRepository storeRepo;
+	
+	@Autowired
+	private RewardRepository rewardRepo;
 	
 	@GetMapping("/store")
 	public String store() {

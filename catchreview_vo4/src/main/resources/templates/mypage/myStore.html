@@ -82,7 +82,7 @@
 					</thead>
 					<tbody id="storeTable" th:with="result=${result.result}">
 						<tr th:each="store:${result.content}">
-						<td>[[${store.storeName}]]</td>
+						<td><a th:href="${store.storeNum}" class="boardLink">[[${store.storeName}]]</a></td>
 						<td>현상금</td>
 						<td>기간</td>
 						<td>리뷰현황</td>
@@ -146,10 +146,10 @@
 		
 		$(".boardLink").click(function(e){
 			e.preventDefault();
-			
+			alert("이동 준비!");
 			var storeNo = $(this).attr("href");
 			
-			formObj.attr("action",[[@{'/qnaBoards/view'}]]);
+			formObj.attr("action",[[@{'/store/view'}]]);
 			formObj.append("<input type='hidden' name='storeNum' value='" + storeNo + "'>'");
 			
 			formObj.submit();

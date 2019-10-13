@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.catchreview.point.domain.Point;
 import com.catchreview.store.domain.Store;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -38,9 +37,5 @@ public class Reward {
 	@JsonIgnore
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Store store; 
-	
-	@JsonIgnore
-	@ManyToOne(fetch=FetchType.LAZY)
-	private Point point;
 	
 }

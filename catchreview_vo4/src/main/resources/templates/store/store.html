@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout/defaultLayout}">
+<head>
+<meta charset="utf-8">
+<th:block layout:fragment="pageCustomCss">
+    <link rel="stylesheet" th:href="@{/css/store/store.css}">
+</th:block>
+</head>
+
+<th:block layout:fragment="content">
+
+	<!-- index 메인 -->
+	<section class="container" style="width: 70%;">
+		<div class="centerWrap">
+			<div id="sectionHead">
+				<ul>
+					<li><a href="../index.jsp">Home</a> >&nbsp;</li>
+					<li>가게 소개 페이지</li>
+				</ul>
+			</div>
+			<article id="topBox">
+				<div id="head">
+					<h1>[[${vo.storeName}]]</h1>
+				
+						<div id="expreimgBox">
+							<div class="expreimg">
+								<img src="../images/store/good.png" style="width: 40px; height: 40px;">
+								<ul>
+									<li>최고에요</li>
+									<li>23</li>
+								</ul>
+							</div>
+							<div class="expreimg">
+								<img src="../images/store/soso.png" style="width: 40px; height: 40px;">
+								<ul>
+									<li>쏘쏘</li>
+									<li>22</li>
+								</ul>
+							</div>
+							<div class="expreimg">
+								<img src="../images/store/bad.png" style="width: 40px; height: 40px;">
+								<ul>
+									<li>화나요</li>
+									<li>32</li>
+								</ul>
+							</div>
+						</div>
+					<ul>
+							<li>23,000원 현상금 &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</li>
+							<li>기간 : 2019.08.25 ~ 2019.09.25
+								&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+							</li>
+							<li>6개 리뷰 참여중 / 총 23
+								리뷰</li>
+						</ul>
+						<ul>
+							<li>[[${vo.storeAddress1}]]&nbsp;[[${vo.storeAddress2}]]&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+							</li>
+							<li>[[${vo.businessTime}]]</li>
+						</ul>
+				</div>
+				<div id="content">
+						
+						<div id="best_review">
+		
+							<div id="sticker">
+								<ul
+									style="margin-top: 10px; margin-left: 10px; font-weight: bold; font-size: 15px;">
+									<li style="color : #ffffff;">Best Review</li>
+									<li style="margin-top: 8px; color : #ffffff;">Score : 32점</li>
+								</ul>
+							</div>
+
+
+							<div id="review_box">
+								<div id="contentHead">
+									<ul style="display: block;">
+										<li style="font-size: 20px; margin-top: 8px;">Best Review 제목</li>
+										<li style="float: right;">
+											<div class="expreimg"
+												style="float: right; text-align: center; width: 70px; height: 70px;">
+												<div class="expreimg"
+													style="text-align: center; width: 70px; height: 70px;">
+													<img src="../images/store/good.png"
+														style="width: 40px; height: 40px;">
+													<ul style="margin-top: 0px;">
+														<li>좋아요!</li>
+													</ul>
+													
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div id="contentContent">
+									<ul style="margin-top: 0px;">
+										<li style="height: 50px;">베스트 리뷰 내용</li>
+										<li style="margin-top: 20px;">
+								<img class="reprePicture"
+											src="../uploadFile/reviewPicture/<%=reviewPictureList.get(0).getFileName()%>"
+											style="width: 340px; height: 200px;"> 
+										</li>
+									</ul>
+								</div>
+								<div id="contentBottom" style="margin-top: 5px;">
+							
+									<div style="background-image: url(./images/basicProfile.png);"
+										style="width:50px; height : 50px; border-radius : 50px;"></div>
+
+									<ul style="margin-left: 30px; margin-top: 5px;">
+										<li>베스트리뷰작성자&nbsp;&nbsp;베스트리뷰어랭킹&nbsp;Rank</li>
+										<li style="margin-top: 5px;">작성일자 : 리뷰 작성일</li>
+									</ul>
+								</div>
+
+
+
+
+
+							</div>
+						</div>
+						
+						<div id="photo">
+							<div id="left">
+								
+								<img class="reprePicture"
+									src="../uploadFile/storePicture/<%=listPicture.get(0).getFileName()%>"
+									style="width: 550px; height: 450px;">
+							</div>
+							<div id="right">
+								<div class="right_photo">
+					
+									<img class="reprePicture"
+										src="../uploadFile/storePicture/<%=listPicture.get(1).getFileName()%>"
+										style="width: 250px; height: 150px;">
+									
+		
+								</div>
+								<div class="right_photo">
+									
+									<img class="reprePicture"
+										src="../uploadFile/storePicture/<%=listPicture.get(2).getFileName()%>"
+										style="width: 250px; height: 150px;">
+									
+									
+								</div>
+								<div class="right_photo">
+									
+									<img class="reprePicture"
+										src="../uploadFile/storePicture/<%=listPicture.get(3).getFileName()%>"
+										style="width: 250px; height: 150px;">
+									
+								</div>
+							</div>
+						</div>
+					</div>
+			</article>
+				<article id="middleBox">
+					<div class="content">
+						<div class="content_head">
+						
+							<h2>[[${vo.storeName}]]</h2>
+							<h1>
+								현상금<span>23,000원</span>
+							</h1>
+							
+							<!-- 가게순위 -->
+						</div>
+						<div class="content_body" style="height: 300px;">
+						<% if(rewardAmounts !=0){ %>
+							<ul>
+								<li><h2>
+										기간 :
+										<%= fromDate %>
+										~
+										<%= toDate %></h2> <span><%=storeReviewCount%>개 리뷰</span></li>
+								<li></li>
+							</ul>
+							<%} %>
+							<div class="content_box">
+							<% if(bestReviewList.size()>0){ %>
+								<div class="left_box">
+									<h3 style="margin-top : 10px;">
+										<div class="rankMark">
+											<span
+												style="margin-top: 20px; float: left; margin-left: 20px; color : #ffffff; font-weight : bold;">1위</span>
+										</div>
+									</h3>
+								</div>
+								<div class="right_box">
+								
+									<h1>
+										&nbsp;&nbsp;&nbsp;<%= bestReviewList.get(0).getReviewTitle() %><span><%= bestReviewRate %>점</span>
+									</h1>
+									<h1 style="margin-top: 7px; font-size:15px;">
+										&nbsp;&nbsp;&nbsp;<%= bestReviewList.get(0).getEmail() %><span><%= bestMember.getUserGrade() %>&nbsp;&nbsp;Rank</span>
+									</h1>
+									
+								</div>
+								<%} %>
+							</div>
+							<div class="content_box" style="margin-top: 40px;">
+							<% if(bestReviewList.size()>1) { %>
+								<div class="left_box">
+									<h3>
+										<div class="rankMark">
+											<span
+												style="margin-top: 20px; float: left; margin-left: 20px; color : #ffffff; font-weight : bold;">2위</span>
+										</div>
+									</h3>
+								</div>
+								<div class="right_box">
+									<h1>
+										&nbsp;&nbsp;&nbsp;<%= bestReviewList.get(1).getReviewTitle() %><span><%= twoReviewRate %>점</span>
+									</h1>
+									<h1 style="margin-top: 7px; font-size:15px;">
+										&nbsp;&nbsp;&nbsp;<%= bestReviewList.get(1).getEmail() %><span><%= twoBestMember.getUserGrade() %>&nbsp;&nbsp;Rank</span>
+									</h1>
+								</div>
+								<%} %>
+							</div>
+							<div class="content_box" style="margin-top: 40px;">
+							<% if(bestReviewList.size()>2) { %>
+								<div class="left_box">
+									<h3>
+										<div class="rankMark">
+											<span
+												style="margin-top: 20px; float: left; margin-left: 20px; color : #ffffff; font-weight : bold;">3위</span>
+										</div>
+									</h3>
+								</div>
+								<div class="right_box">
+									<h1>
+										&nbsp;&nbsp;&nbsp;<%= bestReviewList.get(2).getReviewTitle() %><span><%= threeReviewRate %>점</span>
+									</h1>
+									<h1 style="margin-top: 7px; font-size:15px;">
+										&nbsp;&nbsp;&nbsp;<%= bestReviewList.get(2).getEmail() %><span><%= threeBestMember.getUserGrade() %>&nbsp;&nbsp;Rank</span>
+									</h1>
+								</div>
+								<%} %>
+							</div>
+
+						</div>
+					</div>
+					<div class="content">
+						<div class="content_head" style="margin-bottom: 10px;">
+							<h2>소개</h2>
+							<dl>
+								<dd style="height: 220px;"><%=storeIntro%></dd>
+							</dl>
+						</div>
+						<div class="content_body" style="height: 100px;">
+							<div class="content_box">
+								<div class="left_box">영업시간</div>
+								<div class="right_box">
+									<dl>
+										<dt style="margin-bottom: 5px;"><%=businessTime%></dt>
+									</dl>
+								</div>
+								<div class="left_box">
+									휴일
+								</div>
+								<div class="right_box"><%= holiday %></div>
+							</div>
+						</div>
+					</div>
+					<div class="content">
+						<div class="content_head" style="margin-bottom: 10px;">
+							<h2>문의하기</h2>
+						</div>
+						<div class="content_body">
+							<div id="map" style="width: 350px; height: 200px;"></div>
+							<div class="content_box" style="height: 30px;">
+								<div class="left_box" style="height: 30px;">위치</div>
+								<div class="right_box" style="height: 30px;"><%=storeAddress1%></div>
+							</div>
+							<div class="content_box" style="height: 30px;">
+								<div class="left_box" style="height: 30px;"></div>
+								<div class="right_box" style="height: 30px;"><%=storeAddress2%></div>
+							</div>
+							<div class="content_box" style="height: 30px;">
+								<div class="left_box" style="height: 30px;">전화번호</div>
+								<div class="right_box" style="height: 30px;"><%=storePhone%></div>
+							</div>
+							<div class="content_box" style="height: 30px;">
+								<div class="left_box" style="height: 30px;">예약하기</div>
+								<div class="right_box" style="height: 30px;">
+									12/54<a href="#"><span>예약신청</span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</article>
+			<article id="bottomBox">
+					<div id="bottomHead">
+						<%
+							if (session.getAttribute("email") != null) {
+						%>
+						<h1>
+							리뷰<span>(<%=storeReviewCount%>)
+							</span><a id="btn_write">리뷰 작성하기</a>
+						</h1>
+						<%
+							} else {
+						%>
+						<h1>
+							리뷰<span>(<%=storeReviewCount%>)
+							</span><a href="../login/loginForm.jsp">리뷰 작성하기</a>
+						</h1>
+						<%
+							}
+						%>
+
+					</div>
+					<%
+						for (int i = 0; i < reviewList.size(); i++) {
+							String email = reviewList.get(i).getEmail();
+							dtoUser = DaoUser.selectOneUser(email);
+							int memberGrade = dtoUser.getUserGrade();
+							int reviewNum = reviewList.get(i).getReviewNum();
+							String reviewTitle = reviewList.get(i).getReviewTitle();
+							String reviewContent = reviewList.get(i).getReviewContent();
+							String reviewWriteTime = reviewList.get(i).getReviewWriteTime();
+							String reviewWriteTime2 = reviewWriteTime.substring(0, 4) + "년" + reviewWriteTime.substring(5, 7) + "월"
+									+ reviewWriteTime.substring(8, 10) + "일";
+							double reviewRate = DaoReviewRate.reviewRate(reviewNum);
+							int storeRateLikeUnlike = DaoReviewRate.reviewStoreRate(reviewNum, email);
+					%>
+					<div style="display: flex; justify-content: center">
+						<article style="width: 1200px; margin-bottom: 0px;">
+							<div id="bottomContent">
+								<div id="bottom_left"
+									style="height: 163px; margin-top: 25px; margin-left: 0px;">
+
+									<ul>
+										<%
+							if(dtoUser.getUserPicture() !=null){
+						%>
+										<div class="profile"
+											style="background-image: url(../uploadFile/profilePicture/<%=dtoUser.getUserPicture()%>);"></div>
+										<%
+							} else {
+						%>
+										<div class="profile"
+											style="background-image: url(../images/common/basicProfile.png);"></div>
+										<%
+							}
+						%>
+										<a href="../mypage/"><li
+											style="margin-top: 8px; margin-left: 50px;"><%=email%></li></a>
+										<li style="margin-top: 3px; margin-left: 50px;"><%=memberGrade%></li>
+
+									</ul>
+
+								</div>
+
+								<div id="bottom_right"
+									style="width: 800px; padding-bottom: 21px; margin-bottom: 1px; margin-right: 40px; height: 204px; padding-top: 4px;">
+
+
+									<div id="expreimgBox">
+										<div class="expreimg" style="right: 70px; text-align: center;">
+											<%
+												if (storeRateLikeUnlike == 2) {
+											%>
+											<img src="../images/common/good.png">
+											<ul>
+												<li>좋아요!</li>
+											</ul>
+											<%
+												} else if (storeRateLikeUnlike == 0) {
+											%>
+											<img src="../images/common/soso.png">
+											<ul>
+												<li>보통</li>
+											</ul>
+											<%
+												} else if (storeRateLikeUnlike == -1){
+											%>
+											<img src="../images/common/bad.png">
+											<ul>
+												<li>나빠요!</li>
+											</ul>
+											<%
+												}
+											%>
+										</div>
+									</div>
+
+									<dl style="margin-bottom: 0px; margin-top: 1px; padding-top : 30px;">
+										<a onclick="addReview(<%=reviewNum%>)">
+											<dt style="margin-bottom: 16px;">
+
+												<h1
+													style="margin-bottom: 0px; margin-top: 10px; font-size: medium;"><%=reviewTitle%></h1>
+											</dt>
+											<dd style="margin-top: 20px;"><%=reviewContent%></dd>
+										</a>
+										<div style="display: flex; justify-content: flex-end; margin-top:30px;">
+											<dd>
+												작성일 :
+												<%=reviewWriteTime2%></dd>
+											<dd></dd>
+											<dd style="margin-left: 20px;">
+												리뷰 평점
+												<div
+													style="background: url('../images/common/star.gif') no-repeat 0 -33px; margin-left: 5px; width: 75px; height: 20px; float: right;">
+													<div
+														style="overflow: hidden; width: <%=reviewRate * 20%>%; height: 20px;">
+														<div
+															style="background: url('../images/common/star.gif') no-repeat 0 -96px; width: 100px; height: 20px;"></div>
+													</div>
+												</div>
+											</dd>
+										</div>
+									</dl>
+								</div>
+								<div style="position: relative;">
+									<%
+								if (session.getAttribute("email") != null) {
+									if(email.equals(session.getAttribute("email"))){
+								%>
+									<a class="reviewUpdate" onclick="reviewModify(<%=reviewNum%>)"
+										style="position: absolute; top: 60px; right: -60px;">수정</a> <a
+										class="reviewUpdate" onclick="reviewDelete(<%=reviewNum%>)"
+										style="position: absolute; top: 100px; right: -60px;">삭제</a>
+									<%
+									}
+								}
+								%>
+								</div>
+							</div>
+						</article>
+					</div>
+
+
+					<%
+						}
+					%>
+					<div style="display: grid;">
+						<div class="wr_num">
+							<ul id="pagination">
+
+								<%
+									if (nowPage > 1) {
+								%>
+								<li style="border: none;"><a
+									onclick="location.href='store.jsp?storeNum=<%=storeNum%>&page=<%=nowPage - 1%>'"><</a></li>
+								<%
+									}
+								%>
+
+								<%
+								if (endPage > 1) {
+									for (int pageNum = startPage; pageNum <= endPage; pageNum++) {
+										if (pageNum == nowPage) {
+								%><li style="background-color: #00A7B3;"><div
+										class="selected"><%=pageNum%></div></li>
+								<%
+									} else {
+								%>
+								<li><a
+									href="store.jsp?storeNum=<%=storeNum%>&page=<%=pageNum%>">
+										<%=pageNum%>
+								</a></li>
+								<%
+									}
+									}
+								}
+								%>
+
+								<%
+									if (nowPage < maxPage) {
+								%>
+								<li style="border: none;"><a
+									onclick="location.href='store.jsp?storeNum=<%=storeNum%>&page=<%=nowPage + 1%>'">></a></li>
+								<%
+									}
+								%>
+
+							</ul>
+						</div>
+					</div>
+				</article>
+		</div>
+	</section>
+</th:block>
+
+<th:block layout:fragment="pageCustomScript">
+<script th:src="@{/js/store/storeRegist.js}"></script>
+<script th:inline="javascript">
+$('#file1').on('change', function(){
+	 var file = $('#singleFileUploadInput').val();
+	 var filename = file.substring(12);
+  	  $('#filename1').attr('value', filename);
+ });
+$('#file2').on('change', function(){
+	 var file = $('#singleFileUploadInput').val();
+	 var filename = file.substring(12);
+ 	  $('#filename2').attr('value', filename);
+});
+$('#file3').on('change', function(){
+	 var file = $('#singleFileUploadInput').val();
+	 var filename = file.substring(12);
+ 	  $('#filename3').attr('value', filename);
+});
+$('#file4').on('change', function(){
+	 var file = $('#singleFileUploadInput').val();
+	 var filename = file.substring(12);
+ 	  $('#filename4').attr('value', filename);
+});
+</script>
+</th:block>
+
+</html>

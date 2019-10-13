@@ -1,10 +1,10 @@
 package com.catchreview.store.controller;
 
-import java.util.Arrays;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +17,7 @@ import com.catchreview.common.awsUpload.S3UploaderService;
 import com.catchreview.join.domain.Member;
 import com.catchreview.point.domain.Point;
 import com.catchreview.point.persistence.PointRepository;
+import com.catchreview.qnaBoard.vo.PageVO;
 import com.catchreview.reward.domain.Reward;
 import com.catchreview.reward.persistence.RewardRepository;
 import com.catchreview.store.domain.Store;
@@ -40,6 +41,13 @@ public class StoreController {
 	
 	@Autowired
 	private S3UploaderService s3Uploader;
+	
+	@GetMapping("/view")
+	public void view(Long storeNum, @ModelAttribute("pageVO") PageVO vo, Model model) {
+		log.info("storeNum : " + storeNum);
+		
+		storeRepository.findById(storeNum).ifPresent(store -> model.addAttribute("vo", store));
+	}
 	
 	@GetMapping("/storeRegist")
 	public String storeRegist() {
@@ -75,15 +83,12 @@ public class StoreController {
 		
 		rewardRepo.save(rewardVO);
 		
-		Optional<Reward> opReward = rewardRepo.findByStore(store);
-		Reward reward = opReward.get();
-		
 		Point pointVO = new Point();
 		pointVO.setUser(member);
 		pointVO.setPointAmounts(rewardVO.getRewardAmounts());
 		pointVO.setIo("o");
 		pointVO.setPointContent(storeVO.getStoreName() + " reward로 " + rewardVO.getRewardAmounts() + "게시");
-		pointVO.setHistories(Arrays.asList(reward));
+		
 		pointRepo.save(pointVO);
 		
 		

@@ -80,53 +80,81 @@
 							<th style="width: 15%;">비고</th>
 						</tr>
 					</thead>
-					<tbody id="storeTable">
-						<tr>
-						<td>[[${result.result}]]</td>
+					<tbody id="storeTable" th:with="result=${result.result}">
+						<tr th:each="store:${result.content}">
+						<td>[[${store.storeName}]]</td>
+						<td>현상금</td>
+						<td>기간</td>
+						<td>리뷰현황</td>
+						<td>[[${store.storeAddress1}]]  [[${store.storeAddress2}]]</td>
+						<td>비고</td>
 						</tr>
 					</tbody>
 				</table>
-				
-				
 			</article>
+			<div class="panel-footer text-center" style="position : relative; margin-bottom : 40px;">
+								<ul class="pagination">
+									<li class="page-item" th:if="${result.prevPage}"><a
+										th:href="${result.prevPage.pageNumber} +1">&#60;&#60;</a></li>
+
+									<li class="page-item"
+										th:classappend="${p.pageNumber == result.currentPageNum -1}?active: '' "
+										th:each="p:${result.pageList}"><a
+										th:href="${p.pageNumber} +1">[[${p.pageNumber} +1]]</a></li>
+
+									<li class="page-item" th:if="${result.nextPage}"><a
+										th:href="${result.nextPage.pageNumber} +1">&#62;&#62;</a></li>
+								</ul>
+								<form id='f1' th:action="@{myStore}" method="get">
+									<input type='hidden' name='page'
+										th:value=${result.currentPageNum}> <input
+										type='hidden' name='size'
+										th:value=${result.currentPage.pageSize}>
+										
+										<input
+										type='hidden' name='id'
+										th:value=${session.memberVo.id}>
+										
+								</form>
+							</div>
+			
 		</div>
 	</section>
 </th:block>
 
 <th:block layout:fragment="pageCustomScript">
 	<script th:src="@{/js/mypage/mystore.js}"></script>
-	<script th:src="@{/js/store/storeList.js}"></script>
 	<script th:inline="javascript">
-	
-	var id = [[${session.memberVo.id}]];
-	
-	var obj = {id:id};
-	
-	alert(id);
-	(function(){
+	$("document").ready(function() {
 		
-		// load stores
-		storeManager.getAll(obj, printList);
-	})();
-	
-	
-	function printList(list){
-		var str = "";
-		var storeObj;
-		for(var i=0; i<list.length; i++){
-			storeObj = list[i];
-			
-			str += "<tr>" +
-			"<td>" + storeObj.storeName+ " </td>" +
-			"<td>현상금</td>" +
-			"<td>기간</td>" +
-			"<td>리뷰현황</td>" +
-			"<td>" + storeObj.storeAddress1 + " " + storeAddress2 + " </td>" +
-			"<td>비고</td>" +
-			"</tr>";
+		var formObj = $("#f1");
+		
+		$(".pagination a").click(function(e) {
+			e.preventDefault();
+
+			formObj.find('[name="page"]').val($(this).attr('href'));
+			formObj.submit();
+		});
+		
+		var msg = [[${msg}]];
+		
+		if(msg == 'success'){
+			alert("정상적으로 처리되었습니다.");
+			var stateObj = {msg : "" };
 		}
-		$("#storeTable").html(str);
-	}
+		
+		
+		$(".boardLink").click(function(e){
+			e.preventDefault();
+			
+			var storeNo = $(this).attr("href");
+			
+			formObj.attr("action",[[@{'/qnaBoards/view'}]]);
+			formObj.append("<input type='hidden' name='storeNum' value='" + storeNo + "'>'");
+			
+			formObj.submit();
+		});
+	});
 	</script>
 </th:block>
 

@@ -28,7 +28,7 @@ public class MyStoreTests {
 	@Autowired
 	private MyStoreRepository storeRepo;
 	
-
+	@Test
 	public void insertStoreDummies() {
 		
 		IntStream.range(0, 20).forEach(i -> {
@@ -52,7 +52,7 @@ public class MyStoreTests {
 		});
 	}
 	
-	@Test
+
 	public void testList1() {
 		
 		Pageable pageable = PageRequest.of(0, 20, Direction.DESC, "storeNum");

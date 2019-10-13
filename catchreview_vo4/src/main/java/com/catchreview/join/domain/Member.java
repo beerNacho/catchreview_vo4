@@ -1,15 +1,21 @@
 package com.catchreview.join.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.catchreview.point.domain.Point;
+import com.catchreview.store.domain.Store;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -21,8 +27,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "tb_members")
 @EqualsAndHashCode(of = "id")
-@ToString
-//@ToString(exclude="stores")
+@ToString(exclude= {"stores", "points"})
 public class Member {
 	
 	@Id
@@ -57,7 +62,10 @@ public class Member {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedate;
 	
-//	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
-//	private List<Store> stores;
+	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
+	private List<Store> stores;
+	
+	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
+	private List<Point> points;
 	
 }

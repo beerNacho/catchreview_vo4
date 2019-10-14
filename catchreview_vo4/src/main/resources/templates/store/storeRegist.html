@@ -63,21 +63,21 @@
 							<div id="photo">
 
 								<div id="left">
-									<input type="file" name="file1" value="사진 등록하기">
-									<input type="hidden" name="filename1">
+									<input type="file" id="file1" name="file1" value="사진 등록하기">
+									<input type="hidden" id="filename1" name="filename1">
 								</div>
 								<div id="right">
 									<div class="right_photo">
-									<input type="file" name="file2" value="사진 등록하기">
-									<input type="hidden" name="filename2">
+									<input type="file" id="file2" name="file2" value="사진 등록하기">
+									<input type="hidden" id="filename2" name="filename2">
 									</div>
 									<div class="right_photo">
-									<input type="file" name="file3" value="사진 등록하기">
-									<input type="hidden" name="filename3">
+									<input type="file" id="file3" name="file3" value="사진 등록하기">
+									<input type="hidden" id="filename3" name="filename3">
 									</div>
 									<div class="right_photo">
-									<input type="file" name="file4" value="사진 등록하기">
-									<input type="hidden" name="filename4">
+									<input type="file" id="file4" name="file4" value="사진 등록하기">
+									<input type="hidden" id="filename4" name="filename4">
 									</div>
 
 								</div>
@@ -147,6 +147,7 @@
 										<div id="qna_1" style="display: none;"></div>
 										<input type="text" class="rightInput" id="txt_qna1"
 											placeholder="주소" name="storeAddress1"> <input
+											id="btn_post"
 											type="button" onclick="sample6_execDaumPostcode()"
 											style="width: 60px; height: 30px; font-weight: normal; margin-left: 10px; border: 1px solid #d7dbe2; background-color: #fff; color: black; margin-bottom: 10px; position: absolute; top: 5px; right: -5px;"
 											value="검색">
@@ -191,24 +192,26 @@
 <script th:src="@{/js/store/storeRegist.js}"></script>
 <script th:inline="javascript">
 $('#file1').on('change', function(){
-	 var file = $('#singleFileUploadInput').val();
-	 var filename = file.substring(12);
-  	  $('#filename1').attr('value', filename);
+	 var file1 = $('#file1').val();
+	 var filename1 = file1.substring(12);
+  	  $('#filename1').attr('value', filename1);
+  	  alert(filename1);
  });
 $('#file2').on('change', function(){
-	 var file = $('#singleFileUploadInput').val();
-	 var filename = file.substring(12);
- 	  $('#filename2').attr('value', filename);
+	 var file2 = $('#file2').val();
+	 var filename2 = file2.substring(12);
+ 	  $('#filename2').attr('value', filename2);
 });
 $('#file3').on('change', function(){
-	 var file = $('#singleFileUploadInput').val();
-	 var filename = file.substring(12);
- 	  $('#filename3').attr('value', filename);
+	 var file3 = $('#file3').val();
+	 var filename3 = file3.substring(12);
+ 	  $('#filename3').attr('value', filename3);
+ 	  
 });
 $('#file4').on('change', function(){
-	 var file = $('#singleFileUploadInput').val();
-	 var filename = file.substring(12);
- 	  $('#filename4').attr('value', filename);
+	 var file4 = $('#file4').val();
+	 var filename4 = file4.substring(12);
+ 	  $('#filename4').attr('value', filename4);
 });
 </script>
 </th:block>

@@ -47,7 +47,7 @@ public class Store {
 	
 	private String storeHoliday;
 	
-	private String sotreIntro;
+	private String storeIntro;
 	
 	private String filename1;
 	

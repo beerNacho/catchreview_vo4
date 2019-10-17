@@ -3,6 +3,8 @@ package com.catchreview.store.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +16,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.catchreview.common.awsUpload.S3UploaderService;
+import com.catchreview.common.vo.PageMaker;
 import com.catchreview.join.domain.Member;
 import com.catchreview.point.domain.Point;
 import com.catchreview.point.persistence.PointRepository;
 import com.catchreview.qnaBoard.vo.PageVO;
+import com.catchreview.review.domain.Review;
+import com.catchreview.review.persistence.ReviewRepository;
 import com.catchreview.reward.domain.Reward;
 import com.catchreview.reward.persistence.RewardRepository;
 import com.catchreview.store.domain.Store;
@@ -31,22 +36,28 @@ import lombok.extern.java.Log;
 public class StoreController {
 	
 	@Autowired
-	StoreRepository storeRepository;
+	private StoreRepository storeRepository;
 	
 	@Autowired
-	PointRepository pointRepo;
+	private PointRepository pointRepo;
 	
 	@Autowired
-	RewardRepository rewardRepo;
+	private RewardRepository rewardRepo;
 	
 	@Autowired
 	private S3UploaderService s3Uploader;
 	
+	@Autowired
+	private ReviewRepository reviewRepo;
+	
 	@GetMapping("/view")
-	public void view(Long storeNum, @ModelAttribute("pageVO") PageVO vo, Model model) {
+	public void view(Long storeNum, @ModelAttribute("pageVO") PageVO pageVO, Model model) {
 		log.info("storeNum : " + storeNum);
-		
 		storeRepository.findById(storeNum).ifPresent(store -> model.addAttribute("vo", store));
+		
+		Pageable page = pageVO.makePageable(0, "reviewNum");
+		Page<Review> result = reviewRepo.findAll(reviewRepo.makePredicate(storeNum), page);
+		model.addAttribute("result", new PageMaker(result));
 	}
 	
 	@GetMapping("/storeRegist")

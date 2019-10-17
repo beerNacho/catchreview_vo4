@@ -2,7 +2,7 @@
   var left = Math.ceil((window.screen.width-750)/2);
   
 function addReview(reviewNum){
-	myWindow = window.open('../review/addReview.jsp?reviewNum='+reviewNum, '', 'width=720, height=500, left='+left);
+	myWindow = window.open('../review/register?reviewNum='+reviewNum, '', 'width=720, height=500, left='+left);
 };
 
 function reviewModify(reviewNum){
@@ -20,7 +20,7 @@ function reviewDelete(reviewNum){
 window.onload=function(){
 	
 	$('#btn_write').on('click', function(){
-		myWindow = window.open("../review/addWrite.jsp?storeNum="+$('#storeNum').attr('value')+"&storeName="+$('#storeName').attr("value"), "tinyWindow", "width=700, height=398, left="+left)
+		myWindow = window.open("../review/register?storeNum="+$('#storeNum').attr('value')+"&storeName="+$('#storeName').attr("value"), "tinyWindow", "width=700, height=398, left="+left)
 	});
 	
 
@@ -34,7 +34,9 @@ window.onload=function(){
 	});
 	
 	var storeName = $('#storeName').val();
-	var address = $('#storeAddress').val();
+	var address1 = $('#storeAddress1').val();
+	var address2 = $('#storeAddress2').val();
+	var address = address1 + " " + address2;
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표

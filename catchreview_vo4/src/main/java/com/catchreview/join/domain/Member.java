@@ -27,7 +27,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "tb_members")
 @EqualsAndHashCode(of = "id")
-@ToString(exclude= {"stores", "points"})
+@ToString(exclude= {"stores", "points", "reviews"})
 public class Member {
 	
 	@Id

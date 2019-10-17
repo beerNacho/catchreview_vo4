@@ -11,7 +11,10 @@
 </head>
 
 <th:block layout:fragment="content">
-
+	<input type="hidden" id="storeNum" th:value="${vo.storeNum}">
+	<input type="hidden" id="storeName" th:value="${vo.storeName}">
+	<input type="hidden" id="storeAddress1" th:value="${vo.storeAddress1}">
+	<input type="hidden" id="storeAddress2" th:value="${vo.storeAddress2}">
 	<!-- index 메인 -->
 	<section class="container" style="width: 70%;">
 		<div class="centerWrap">
@@ -386,6 +389,8 @@
 </th:block>
 
 <th:block layout:fragment="pageCustomScript">
+<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e0853fb58f3f6c7a181c9ca5c58735af&libraries=services"></script>
 <script th:src="@{/js/store/store.js}"></script>
 <script th:inline="javascript">
 </script>

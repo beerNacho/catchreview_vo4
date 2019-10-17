@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	>
+<head>
+<meta charset="utf-8">
+<th:block layout:fragment="pageCustomCss">
+    <link rel="stylesheet" th:href="@{/css/review/addReview.css}">
+</th:block>
+</head>
+
+<th:block layout:fragment="content">
+
+	<!-- index 메인 -->
+	<section>
+			<div id="review_popup">
+				<div id="review_screen">
+					<div id="text_box">
+						<h3 style="margin-top: 0px;">Review</h3>
+						<img src="../images/common/btn_popup_close.png" class="btn_close">
+					</div>
+					<div id="content_box">
+
+						<div id="input_box">
+							<div id="head">
+								
+						<img src="../images/common/basicProfile.png">
+							<div id="user">
+									<ul>
+										<li>리뷰작성자</li>
+										<li style="margin-top: 5px;"><span>Gold</span></li>
+									</ul>
+								</div>
+
+								<a href="index.html" id="btn_refute"
+									onclick="btn_insert(); return false;" style="padding: 8px;">
+									반박 하기 </a>
+							</div>
+							<div id="content">
+								<div style="height: 15px;">
+									<div style="float: left;">
+										<input type="hidden" id="storeNum" value="">
+										<a id="goStore"><h4>#가게이름</h4></a>
+									</div>
+									<div class="expreimg"
+										style="float: right; right: 0px; text-align: center; margin-right: 20px;">
+										<div class="expreimg" style="right: 0px; text-align: center;">
+											
+											<img src="../images/store/good.png" style="width: 40px; height: 40px;">
+											<ul>
+												<li>좋아요!</li>
+											</ul>
+											
+										</div>
+									</div>
+								</div>
+								<div>
+									<h3>리뷰 제목</h3>
+								</div>
+								
+								<img src="../uploadFile/reviewPicture/<%=fileName%>"
+									style="margin-top: 20px;">
+								
+								<div style="margin-top: 20px; margin-bottom: 20px;">리뷰내용</div>
+								<div>
+									<div style="float: right;">
+										작성일:
+										리뷰작성시간</div>
+								</div>
+
+								<dl
+									style="border: 0; border-top: 1px solid #E6ECF0; border-bottom: 1px solid #E6ECF0; color: #99A5AF; font-weight: bold; position: relative;">
+									<dd style="width: 150px; float: left;">
+
+										
+							
+										<div style="font-size: 18px; margin-bottom: 5px;">리뷰
+											평가하기</div>
+										<div id="starBox1"
+											style="width: 120px; height: 25px; border: solid 1px black;">
+											<div
+												style="background: url('../images/common/star.gif') no-repeat 0 -118px; width: 95px; height: 20px; float: left;">
+												<div id="starBox3"
+													style="overflow: hidden; width: 100%; height: 20px;">
+													<div
+														style="background: url('../images/common/star.gif') no-repeat 0 -144px; width: 100px; height: 20px;"></div>
+												</div>
+											</div>
+											<div style="float: right;">▼</div>
+										</div>
+										
+
+										<ul id="starBox2"
+											style="border: solid 1px black; background-color: white; width: 120px; padding-right: 20px; position: absolute; top: 54px; display: none;">
+											<li value=100>
+												<div
+													style="background: url('../images/common/star.gif') no-repeat 0 -118px; width: 95px; height: 20px; float: right;">
+													<div style="overflow: hidden; width: 100%; height: 20px;">
+														<div
+															style="background: url('../images/common/star.gif') no-repeat 0 -144px; width: 100px; height: 20px;"></div>
+													</div>
+												</div>
+											</li>
+											<li value=80>
+												<div
+													style="background: url('../images/common/star.gif') no-repeat 0 -118px; width: 95px; height: 20px; float: right;">
+													<div style="overflow: hidden; width: 80%; height: 20px;">
+														<div
+															style="background: url('../images/common/star.gif') no-repeat 0 -144px; width: 100px; height: 20px;"></div>
+													</div>
+												</div>
+											</li>
+											<li value=60>
+												<div
+													style="background: url('../images/common/star.gif') no-repeat 0 -118px; width: 95px; height: 20px; float: right;">
+													<div style="overflow: hidden; width: 60%; height: 20px;">
+														<div
+															style="background: url('./images/star.gif') no-repeat 0 -144px; width: 100px; height: 20px;"></div>
+													</div>
+												</div>
+											</li>
+											<li value=40>
+												<div
+													style="background: url('../images/common/star.gif') no-repeat 0 -118px; width: 95px; height: 20px; float: right;">
+													<div style="overflow: hidden; width: 40%; height: 20px;">
+														<div
+															style="background: url('./images/star.gif') no-repeat 0 -144px; width: 100px; height: 20px;"></div>
+													</div>
+												</div>
+											</li>
+											<li value=20>
+												<div
+													style="background: url('../images/common/star.gif') no-repeat 0 -118px; width: 95px; height: 20px; float: right;">
+													<div style="overflow: hidden; width: 20%; height: 20px;">
+														<div
+															style="background: url('../images/common/star.gif') no-repeat 0 -144px; width: 100px; height: 20px;"></div>
+													</div>
+												</div>
+											</li>
+										</ul>
+										<button id="btnRate"
+											style="position: absolute; left: 130px; top: 30px; display: none;">확인</button>
+									</dd>
+
+
+									<form action="funcReviewRate.jsp" id="formReviewRate">
+										
+										<input type="hidden" id="id" name="email"
+											value="">
+										
+										<input type="hidden" name="reviewNum" value="">
+										<input type="hidden" id="reviewRate" name="reviewRate">
+									</form>
+									<dd style="width: 100px; float: left;"></dd>
+									<dd
+										style="border-left: 1px solid #E6ECF0; margin-top: 5px; width: 250px; float: right; padding-left: 10px;">
+										<ul>
+											<li>
+												<div style="float: left; font-size: 18px;">리뷰평점   </div>
+												<div
+													style="background: url('../images/common/star.gif') no-repeat 0 -118px; width: 95px; height: 20px; float: right;">
+													<div
+														style="overflow: hidden; width: 40%; height: 20px;">
+														<div
+															style="background: url('../images/common/star.gif') no-repeat 0 -144px; width: 100px; height: 20px;"></div>
+													</div>
+												</div>
+											</li>
+											<li>
+												<div style="float: left; font-size: 10px; margin-top: 5px;">
+													(평가자:
+													평가자수명)
+												</div>
+												<div style="float: right;">평가점수점
+												</div>
+											</li>
+										</ul>
+									</dd>
+
+								</dl>
+								<b>comment(댓글개수)
+								</b>
+							</div>
+
+						</div>
+					</div>
+					<div id="reply">
+						<div id="replyInput">
+							
+							<div id="replyContent">
+								<input type="text" id="txt_reply" name="commentContent">
+								<input type="button" id="btn_comment2" value="확인">
+							</div>
+							
+						</div>
+						<div id="replyView">
+							
+							<div id="review_content">
+
+								<div id="review_left">
+									<ul>
+								
+									
+						
+						<img src="../images/common/basicProfile.png">
+						
+							
+										<li style="margin-top: 8px;">작성자이름&nbsp;&nbsp;Gold</li>
+									</ul>
+								</div>
+								<div id="review_right">
+									<form id="commentModify" method="post"
+										action="funcCommentModify.jsp">
+
+										<ul style="margin-top: 10px; position: relative;">
+
+											<li style="margin-right: 40px;" id="contentSite"><label
+												class="contentLabel" style="display: block;">댓글내용</label>
+												<input type="text" class="txt_modify"
+												value="<%=commentList.get(i).getCommentContent()%>"
+												style="width: 320px; display: none;"></li>
+
+											<li
+												style="float: right; position: absolute; top: 0px; right: 0px;"
+												class="deleteSite">
+												<input type="button" class="btn_delete" value="X"
+												onclick="location.href ='funcCommentDelete.jsp?commentNum=<%=commentList.get(i).getCommentNum()%>&reviewNum=<%=reviewNum%>' ">
+											</li>
+											
+
+											<li
+												style="float: right; margin-right: 5px; position: absolute; top: 0px; right: 20px;">
+
+											 <input type="button" class="btn_modify"
+												style="width: 22px; height: 22px;"> <input
+												type="hidden" class="txt_commentNum"
+												value="<%=commentList.get(i).getCommentNum()%>"> <input
+												type="button" class="btn_commentModify" value="확인"
+												style="display: none;"> <input type="hidden"
+												name="reviewNum"
+												value="<%=commentList.get(i).getReviewNum()%>"> 
+ 	}
+ 		}
+ %>
+											</li>
+
+										</ul>
+										<dl style="margin-bottom: 0px;">
+											<dd style="font-size: 11px;">
+												리뷰 게시 날짜 : &nbsp;&nbsp;댓글작성시간</dd>
+										</dl>
+									</form>
+								</div>
+
+							</div>
+
+
+							
+						</div>
+					</div>
+				</div>
+				</div>
+				</section>
+</th:block>
+
+<th:block layout:fragment="pageCustomScript">
+<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e0853fb58f3f6c7a181c9ca5c58735af&libraries=services"></script>
+<script th:src="@{/js/review/addReview.js}"></script>
+<script th:inline="javascript">
+$('.btn_modify').on(
+		'click',
+		function() {
+			var contentSite = document
+					.getElementById('contentSite');
+
+			$(this).parent().parent().children(contentSite)
+					.children('.contentLabel').css("display",
+							"none");
+			$(this).parent().parent().children(contentSite)
+					.children('.txt_modify').css("display",
+							"inline-block");
+			$(this).parent().parent().children(contentSite)
+					.children('.txt_modify').attr("name",
+							"commentContent");
+			$(this).css("display", "none");
+			$(this).parent().parent().children('.deleteSite')
+					.css("display", "none");
+			$(this).parent().children('.btn_commentModify')
+					.css("display", "inline-block");
+			$(this).parent().children('.txt_commentNum').attr(
+					"name", "commentNum");
+
+			$(this).parent().children('.btn_commentModify').on(
+					'click',
+					function() {
+						$(this).parent().parent().parent()
+								.parent().children(
+										'#commentModify')
+								.submit();
+					});
+
+		});
+</script>
+</th:block>
+
+</html>

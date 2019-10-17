@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="utf-8">
+<th:block layout:fragment="pageCustomCss">
+	<link rel="stylesheet" th:href="@{/css/review/addWrite.css}">
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</th:block>
+</head>
+
+
+<th:block layout:fragment="content">
+
+
+
+	<section>
+		<div id="write_popup">
+			<div id="write_screen">
+				<div id="write_text_box">
+					<span id="replyHead">reply</span> <img
+						src="../images/common/btn_popup_close.png" class="btn_close">
+				</div>
+				<div id="write_content_box">
+					<form method="POST" enctype="multipart/form-data" id="fileUploadForm">
+						<input type="hidden" name="storeNum" th:value="${vo.storeNum}">
+						<input type="hidden" id="checkRate"> <input type="hidden"
+							id="filename" name="filename">
+							<input type="hidden" id="writer" name="writer" th:value="${session.memberVo.uemail}">
+
+						<div id="storeRate"></div>
+						<div id="write_reply">
+							<ul id="storeInfor" style="padding-left: 0px;">
+								<li id="storeName"># [[${vo.storeName}]]</li>
+								<li class="borderIcon" style="float: right;" value="-1"><img
+									src="../images/common/bad.png"></li>
+								<li class="borderIcon" style="float: right;" value="0"><img
+									src="../images/common/soso.png"></li>
+								<li class="borderIcon" style="float: right;" value="2"><img
+									src="../images/common/good.png"></li>
+							</ul>
+							<div id="write_replyInput">
+								<div id="write_replyContent">
+									<div id="textBox">
+										<div class="line"></div>
+										<input type="text" id="write_txt_reply" name="reviewTitle"
+											class="reply_event" placeholder="제목을 입력해주세요.">
+										<textarea name="reviewContent" placeholder="내용을 입력해주세요."></textarea>
+									</div>
+								</div>
+								<div id="imgBox"></div>
+								<div id="write_replyButton">
+									<ul>
+										<li id="imgIcon"><input type="file" id="file" name="file"><span
+											class="glyphicon glyphicon-picture" style="font-size: 25px;"></span></li>
+										<li style='float: right;'><input type="button"
+											id='btnSubmit' value="작성완료"></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</th:block>
+
+<th:block layout:fragment="pageCustomScript">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
+	<script th:src="@{/js/review/ajaxupload.js}"></script>
+	<script th:inline="javascript">
+		$('#file').on('change', function() {
+			var file = $('#file').val();
+			var filename = file.substring(12);
+			alert(filename);
+			$('#filename').attr('value', filename);
+		});
+	</script>
+</th:block>

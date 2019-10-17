@@ -32,7 +32,9 @@ public class QnaReplyController {
 	
 	@Transactional
 	@PostMapping("/{bno}")
-	public ResponseEntity<List<QnaReply>> addReply(@PathVariable("bno") Long bno, @RequestBody QnaReply reply) {
+	public ResponseEntity<List<QnaReply>> addReply(
+			@PathVariable("bno") Long bno, 
+			@RequestBody QnaReply reply) {
 
 		log.info("addReply...............");
 		log.info("BNO: " + bno);

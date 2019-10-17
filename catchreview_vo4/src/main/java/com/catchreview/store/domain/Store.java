@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.catchreview.join.domain.Member;
+import com.catchreview.review.domain.Review;
 import com.catchreview.reward.domain.Reward;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -27,7 +28,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "tb_store")
 @EqualsAndHashCode(of="storeNum")
-@ToString(exclude= {"user", "rewards"})
+@ToString(exclude= {"user", "rewards", "reviews"})
 public class Store {
 	
 	@Id
@@ -63,4 +64,7 @@ public class Store {
 
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="store")
 	private List<Reward> rewards;
+	
+	@OneToMany(mappedBy="store", fetch=FetchType.LAZY)
+	private List<Review> reviews;
 }

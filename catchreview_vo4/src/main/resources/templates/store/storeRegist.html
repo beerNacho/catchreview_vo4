@@ -113,19 +113,19 @@
 							</div>
 							<div class="content_body" style="height: 100px;">
 								<div class="content_box">
-									<div class="left_box" style="padding-top: 20px; width: 100px;">영업시간</div>
+									<div class="left_box" style="width: 100px;">영업시간</div>
 									<div class="right_box" style="width: 260px;">
 										<dl>
-											<dt style="margin-bottom: 5px; padding-top: 10px;">
+											<dt style="margin-bottom: 5px;">
 												<div id="label_1" style="display: none;"></div>
 												<input type="text" id="txt_1" class="timeInfor"
 													autocomplete="off" name="businessTime">
 											</dt>
 										</dl>
 									</div>
-									<div class="left_box" style="padding-top: 20px; width: 100px;">
+									<div class="left_box" style="width: 100px;">
 										영업휴일</div>
-									<div class="right_box" style="padding-top: 15px; width: 260px;">
+									<div class="right_box" style="width: 260px;">
 										<div id="label_3" style="display: none;"></div>
 										<input type="text" class="timeInfor" id="txt_3"
 											name="storeHoliday">
@@ -189,6 +189,10 @@
 </th:block>
 
 <th:block layout:fragment="pageCustomScript">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript"
+		src="http://t1.daumcdn.net/postcode/api/core/190107/1546836247227/190107.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script th:src="@{/js/store/storeRegist.js}"></script>
 <script th:inline="javascript">
 $('#file1').on('change', function(){

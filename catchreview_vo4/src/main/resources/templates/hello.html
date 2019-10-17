@@ -20,7 +20,7 @@
 				<form id="singleUploadForm" th:name="singleUploadForm" method='post' enctype="multipart/form-data">
 					<input id="singleFileUploadInput" type="file" name="file"
 						class="file-input" required />
-					<button type="submit" class="primary submit-btn">Submit</button>
+					<button id="btnSubmit" type="submit" class="primary submit-btn">Submit</button>
 				</form>
 				<div class="upload-response">
 					<div id="singleFileUploadError"></div>
@@ -44,6 +44,6 @@
 </th:block>
 
 <th:block layout:fragment="pageCustomScript">
-<script th:inline="javascript" th:src="@{'/js/fileUpload.js'}"></script>
+<script th:inline="javascript" th:src="@{'/js/ajaxupload.js'}"></script>
 </th:block>
 </html>

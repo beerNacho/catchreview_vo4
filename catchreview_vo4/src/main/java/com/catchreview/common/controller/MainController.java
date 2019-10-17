@@ -32,6 +32,11 @@ public class MainController {
 
 		return "hello";
 	}
+	
+	@GetMapping("/api/upload")
+	public void upload() {
+		log.info("upload");
+	}
 
 //	@PostMapping("/upload")
 //	@ResponseBody

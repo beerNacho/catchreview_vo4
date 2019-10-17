@@ -130,7 +130,7 @@ textarea{
 	display: flex;
 	flex-direction: column;
 }
-#btn_reply, #btn_submit{
+#btn_reply, #btnSubmit{
 	border: 1px solid #0097D3;
 	border-radius: 0;
 	background-color: #00A7B3;
@@ -159,7 +159,7 @@ textarea{
 .borderLayout{
 	border: 2px solid #00A7B3;
 }
-#iconFile{
+#file{
 	position:absolute;
 	top :0px;
 	left:0px;

@@ -25,7 +25,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "tb_point")
 @EqualsAndHashCode(of="pointNum")
-@ToString(exclude= {"user", "histories"})
+@ToString(exclude= {"user"})
 public class Point {
 	
 	@Id
